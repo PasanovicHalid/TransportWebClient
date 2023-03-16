@@ -7,10 +7,8 @@ import { environment } from 'src/environments/environment.development';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'TransportWebClient';
 
   constructor() {
     console.log(environment.production)
-    
   }
 }

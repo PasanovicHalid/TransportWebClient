@@ -1,0 +1,29 @@
+.companyName {
+    font-weight: 500;
+    font-size: 7vh;
+    color: rgb(96, 153, 102);
+}
+
+.companyDesc {
+    font-weight: 500;
+    font-size: 2vh;
+    color: rgb(157, 192, 139);
+}
+
+img {
+    width: 100%;
+    
+}
+
+.cards {
+    width: 25rem;
+    background-color: rgb(64, 81, 59);
+}
+
+.cards h5 {
+    color: rgb(96, 153, 102);
+}
+
+.cards p {
+    color: rgb(157, 192, 139);
+}
