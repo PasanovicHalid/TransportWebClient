@@ -1,9 +1,0 @@
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: rgb(64, 81, 59);
-    z-index: 1;
-    background-color: rgb(237, 241, 214);
-}
