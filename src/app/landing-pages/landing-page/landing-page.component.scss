@@ -23,7 +23,7 @@
         }
     }
 
-    .login{
+    .login {
         color: black;
         font-size: 1.3rem;
         font-weight: 600;
@@ -45,6 +45,10 @@
     max-width: 400px;
     background-color: #EDF1D6;
     border-radius: 20px;
+
+    mat-card-header {
+        height: 5vh;
+    }
 }
 
 .cards {
@@ -79,24 +83,26 @@
         display: flex;
         justify-content: center;
         align-items: center;
-    }
 
-    .image {
-        max-width: 600px;
-        background-color: #EDF1D6;
-        border-width: 2px;
-        border-style: solid;
-        border-color: lightgray;
-        box-shadow: 4px 4px 4px #609966;
-        border-radius: 10%;
-
-        img {
-            object-fit: contain;
-            width: 100%;
-            height: 100%;
-            border-radius: inherit;
+        .image {
+            max-width: 600px;
+            background-color: #EDF1D6;
+            border-width: 2px;
+            border-style: solid;
+            border-color: lightgray;
+            box-shadow: 4px 4px 4px #609966;
+            border-radius: 10%;
+    
+            img {
+                object-fit: contain;
+                width: 100%;
+                height: 100%;
+                border-radius: inherit;
+            }
         }
     }
+
+    
 
     @media (max-width: 1000px) {
         .image {
@@ -119,6 +125,16 @@
             h3,
             .buttons {
                 width: 100%;
+            }
+
+            h1 {
+                font-size: 8vw;
+                margin-bottom: 0;
+                text-align: start;
+            }
+
+            h3{
+                font-size: 2.5vh; margin-top: 10px;
             }
 
             .buttons {
