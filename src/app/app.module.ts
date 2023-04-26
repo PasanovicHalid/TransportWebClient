@@ -11,6 +11,8 @@ import { PrivateLayoutComponent } from './layouts/private-layout/private-layout.
 import { DashboardComponent } from './landing-pages/dashboard/dashboard.component';
 import { AdminDashboardComponent } from './landing-pages/admin-dashboard/admin-dashboard.component';
 import { LandingPageComponent } from './landing-pages/landing-page/landing-page.component';
+import { NavsModule } from './navs/navs.module';
+import { SideNavComponent } from './navs/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { LandingPageComponent } from './landing-pages/landing-page/landing-page.
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    AuthentificationModule
+    AuthentificationModule,
+    NavsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

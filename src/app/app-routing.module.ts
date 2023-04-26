@@ -6,22 +6,26 @@ import { SignUpComponent } from './authentification/sign-up/sign-up.component';
 import { LoginComponent } from './authentification/login/login.component';
 import { LandingPageComponent } from './landing-pages/landing-page/landing-page.component';
 import { DashboardComponent } from './landing-pages/dashboard/dashboard.component';
+import { EmployeeDashboardComponent } from './employee-management/employee-dashboard/employee-dashboard.component';
 
 const routes: Routes = [
-  { path: '', 
+  {
+    path: '',
     component: PublicLayoutComponent,
     children: [
-      { path: '', component: LandingPageComponent},
-      { path: 'login', component: LoginComponent},
-      { path: 'signUp', component: SignUpComponent}
-    ] 
+      { path: '', component: LandingPageComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'signUp', component: SignUpComponent }
+    ]
   },
-  { path: '', 
+  {
+    path: '',
     component: PrivateLayoutComponent,
     children: [
-      { path: 'dashboard', component: DashboardComponent},
-      { path: 'test', component: LoginComponent}
-    ] 
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'employee-dashboard', component: EmployeeDashboardComponent },
+      { path: 'test', component: LoginComponent }
+    ]
   },
 ];
 

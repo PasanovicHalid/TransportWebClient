@@ -8,7 +8,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background: rgb(157, 192, 139);
+    background: var(--secondary-bg-color);
     z-index: 1;
     min-height: 5vh;
     box-shadow: 0 0 15px 0 rgba(78, 78, 78, 0.5);
@@ -42,9 +42,11 @@
 }
 
 .card {
+    color: var(--primary-text-color);
     max-width: 400px;
-    background-color: #EDF1D6;
+    background-color: var(--secondary-bg-color);
     border-radius: 20px;
+    box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
 
     mat-card-header {
         height: 5vh;
@@ -70,12 +72,12 @@
     margin-top: -5vh;
 
     &.background-effect {
-        background: rgb(157, 192, 139);
-        background: linear-gradient(180deg, rgba(157, 192, 139, 1) 75%, #EDF1D6 100%);
+        background: linear-gradient(180deg, var(--accent-color) 75%, var(--primary-color) 100%);
         height: 80vh;
         width: 100vw;
         border-bottom-left-radius: 20vw;
         border-bottom-right-radius: 20vw;
+        box-shadow: 4px 4px 4px 4px rgba(78, 78, 78, 0.4);
     }
 
     .image-container {
@@ -86,13 +88,13 @@
 
         .image {
             max-width: 600px;
-            background-color: #EDF1D6;
-            border-width: 2px;
+            background-color: var(--secondary-bg-color);
+            border-width: 1px;
             border-style: solid;
-            border-color: lightgray;
-            box-shadow: 4px 4px 4px #609966;
+            border-color: var(--primary-color);
+            box-shadow: 4px 4px 4px var(--primary-color);
             border-radius: 10%;
-    
+
             img {
                 object-fit: contain;
                 width: 100%;
@@ -102,7 +104,7 @@
         }
     }
 
-    
+
 
     @media (max-width: 1000px) {
         .image {
@@ -115,7 +117,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        color: #40513B;
+        color: var(--primary-color);
         padding-bottom: 6vh;
 
         .content {
@@ -133,8 +135,9 @@
                 text-align: start;
             }
 
-            h3{
-                font-size: 2.5vh; margin-top: 10px;
+            h3 {
+                font-size: 2.5vh;
+                margin-top: 10px;
             }
 
             .buttons {
@@ -147,11 +150,13 @@
                     border-radius: 10px;
 
                     &.contact {
-                        background-color: #609966;
+                        color: var(--secondary-bg-color);
+                        background-color: var(--primary-color);
                     }
 
                     &.learn {
-                        background-color: #40513B;
+                        color: var(--primary-color);
+                        background-color: var(--secondary-bg-color);
                     }
                 }
             }
