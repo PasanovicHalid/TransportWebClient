@@ -42,6 +42,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 
 import { LayoutModule } from '@angular/cdk/layout';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -59,7 +60,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    LayoutModule
+    LayoutModule,
   ],
   exports: [
     A11yModule,
@@ -104,7 +105,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatTabsModule,
     MatTooltipModule,
     MatTreeModule,
-    MatRadioModule
+    MatRadioModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: []

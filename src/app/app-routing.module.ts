@@ -7,6 +7,9 @@ import { LoginComponent } from './authentification/login/login.component';
 import { LandingPageComponent } from './landing-pages/landing-page/landing-page.component';
 import { DashboardComponent } from './landing-pages/dashboard/dashboard.component';
 import { EmployeeDashboardComponent } from './employee-management/employee-dashboard/employee-dashboard.component';
+import { EmployeeInfoComponent } from './employee-management/employee-info/employee-info.component';
+import { AddNewEmployeeComponent } from './employee-management/add-new-employee/add-new-employee.component';
+import { AssignTruckToDriverComponent } from './employee-management/assign-truck-to-driver/assign-truck-to-driver.component';
 
 const routes: Routes = [
   {
@@ -24,7 +27,9 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'employee-dashboard', component: EmployeeDashboardComponent },
-      { path: 'test', component: LoginComponent }
+      { path: 'employee-info/:id', component: EmployeeInfoComponent },
+      { path: 'add-new-employee', component: AddNewEmployeeComponent },
+      { path: 'assign-truck-to-driver/:id', component: AssignTruckToDriverComponent },
     ]
   },
 ];

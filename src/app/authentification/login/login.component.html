@@ -9,11 +9,11 @@
         <div class="inputs">
             <mat-form-field appearance="outline">
                 <mat-label>Enter your username</mat-label>
-                <input matInput placeholder="Username">
+                <input [(ngModel)]="this.loginRequest.email" matInput placeholder="Email">
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Enter your password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password">
+                <input [(ngModel)]="this.loginRequest.password" matInput [type]="hide ? 'password' : 'text'" placeholder="Password">
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -21,7 +21,7 @@
             </mat-form-field>
         </div>
         <div class="buttons">
-            <button mat-raised-button color="primary">Login</button>
+            <button mat-raised-button color="primary" (click)="onSubmit()" >Login</button>
         </div>
     </div>
 </div>
