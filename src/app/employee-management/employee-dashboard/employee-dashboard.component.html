@@ -1,23 +1,47 @@
 <div class="content">
     <div class="basic-info-stickers">
-        <div class="card driver-number-background">
-            <h1>Drivers</h1>
-            <h2>10</h2>
+        <div class="card driver-number">
+            <div class="info">
+                <div class="employee-type">
+                    <mat-icon>local_shipping</mat-icon>
+                    <h1>Drivers</h1>
+                </div>
+                <h2>Number:</h2>
+                <h3>Total expendature:</h3>
+            </div>
+            <div class="card-buttons">
+                <button mat-raised-button>Add</button>
+            </div>
         </div>
-        <div class="card employee-number-background">
-            <h1>Employees</h1>
-            <h2>10</h2>
+        <div class="card employee-number">
+            <div class="info">
+                <div class="employee-type">
+                    <mat-icon>badge</mat-icon>
+                    <h1>Employees</h1>
+                </div>
+                <h2>Number:</h2>
+                <h3>Total expendature:</h3>
+            </div>
+            <div class="card-buttons">
+                <button mat-raised-button>Add</button>
+            </div>
         </div>
-        <div class="card admin-number-background">
-            <h1>Admins</h1>
-            <h2>10</h2>
+        <div class="card admin-number">
+            <div class="info">
+                <div class="employee-type">
+                    <mat-icon>admin_panel_settings</mat-icon>
+                    <h1>Admins</h1>
+                </div>
+                <h2>Number:</h2>
+                <h3>Total expendature:</h3>
+            </div>
+            <div class="card-buttons">
+                <button mat-raised-button>Add</button>
+            </div>
         </div>
     </div>
     <div class="displayed-employees">
         <table mat-table [dataSource]="dataSource">
-
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
 
             <!-- Position Column -->
             <ng-container matColumnDef="position">
