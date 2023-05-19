@@ -13,6 +13,8 @@ import { LandingPageComponent } from './landing-pages/landing-page/landing-page.
 import { NavsModule } from './navs/navs.module';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { EmployeeManagementModule } from './employee-management/employee-management.module';
+import { VehicleManagementModule } from './vehicle-management/vehicle-management.module';
+import { RouteManagementModule } from './route-management/route-management.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { EmployeeManagementModule } from './employee-management/employee-managem
     AuthentificationModule,
     NavsModule,
     EmployeeManagementModule,
+    VehicleManagementModule,
+    RouteManagementModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

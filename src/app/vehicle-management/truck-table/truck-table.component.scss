@@ -1,0 +1,19 @@
+.container {
+    border-radius: 20px;
+    background-color: var(--secondary-bg-color);
+    box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
+}
+
+.mat-mdc-table {
+    height: inherit !important;
+    border-radius: inherit;
+    overflow: hidden !important;
+    background: inherit;
+}
+
+.mat-mdc-paginator {
+    border-top: 1px rgba(0, 0, 0, 0.12) solid;
+    background-color: inherit;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}

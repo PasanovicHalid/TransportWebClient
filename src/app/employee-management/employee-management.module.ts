@@ -6,6 +6,7 @@ import { AddNewEmployeeComponent } from './add-new-employee/add-new-employee.com
 import { EmployeeInfoComponent } from './employee-info/employee-info.component';
 import { AngularMaterialModule } from '../library-modules/angular-material.module';
 import { MatTableModule } from '@angular/material/table';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -19,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
   imports: [
     CommonModule,
     AngularMaterialModule,
+    RouterModule
   ]
 })
 export class EmployeeManagementModule { }

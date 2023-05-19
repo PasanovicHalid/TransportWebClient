@@ -39,6 +39,15 @@
             }
         }
 
+        .active {
+            color: var(--primary-color); 
+            background-color: var(--accent-color);
+
+            .icon-color{
+                color: var(--primary-color);
+            }
+        }
+
         .button:hover{
             color: var(--primary-color);
             background-color: var(--accent-color);
