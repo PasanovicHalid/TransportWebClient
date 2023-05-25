@@ -36,6 +36,8 @@ $TransportWebClient-theme: mat.define-light-theme((color: (primary: $TransportWe
 @include mat.all-component-themes($TransportWebClient-theme);
 /* You can add global styles to this file, and also import other style files */
 
+@import 'ngx-toastr/toastr';
+
 html {
   width: 100%;
 }

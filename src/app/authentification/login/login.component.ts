@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { LoginRequest } from '../contracts/requests/login-request';
+import { AuthentificationService } from '../services/authentification.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +13,22 @@ export class LoginComponent {
   hide = true;
   loginRequest : LoginRequest = new LoginRequest();
 
-  constructor() { }
+  constructor(private authService: AuthentificationService,
+    private toastr: ToastrService,
+    private router: Router) { }
 
   onSubmit() {
-    console.log(this.loginRequest);
+    this.authService.login(this.loginRequest).subscribe({
+      next: (response) => {
+        this.authService.AddTokenWithDecodedPayloadToLocalStorage(response.token);
+        this.router.navigate(['/dashboard']);
+
+      },
+      error: (error) => {
+        console.log(error);
+        this.toastr.error(error.error.title);
+      }
+    });
   }
 
 }

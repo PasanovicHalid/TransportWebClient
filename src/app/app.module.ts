@@ -15,6 +15,8 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { EmployeeManagementModule } from './employee-management/employee-management.module';
 import { VehicleManagementModule } from './vehicle-management/vehicle-management.module';
 import { RouteManagementModule } from './route-management/route-management.module';
+import { ToastrModule } from 'ngx-toastr';
+import { CommonCodeModule } from './common-code/common-code.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { RouteManagementModule } from './route-management/route-management.modul
     AngularMaterialModule,
     AuthentificationModule,
     NavsModule,
+    CommonCodeModule,
     EmployeeManagementModule,
     VehicleManagementModule,
     RouteManagementModule,
@@ -40,6 +43,7 @@ import { RouteManagementModule } from './route-management/route-management.modul
         tokenGetter: tokenGetter,
       }
     }),
+    ToastrModule.forRoot(),
   ],
   providers: [JwtHelperService],
   bootstrap: [AppComponent]

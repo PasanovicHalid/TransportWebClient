@@ -1,11 +1,46 @@
 <div class="container">
-    <div class="employee-info-container">
+    <div class="employee-container">
         <div class="title">
-            {{title}}
+            {{Title}}
         </div>
         <div class="inputs">
             <div class="header header-border-top header-border-bottom header-background">
-                <h2>Personal Information*</h2>
+                <h2>Credentials</h2>
+            </div>
+            <div class="flex-space-between gap-20">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input inputmode="email" [(ngModel)]="employeeInfo.email" [formControl]="email" matInput
+                        placeholder="Email">
+                    <mat-error *ngIf="ErrorMap.get('email') || email.invalid">
+                        <ng-container>
+                            <ng-container *ngIf="ErrorMap.get('email'); else clientSideValidationEmail">
+                                {{ErrorMap.get('email')}}
+                            </ng-container>
+                            <ng-template #clientSideValidationEmail>
+                                Please enter a valid email address
+                            </ng-template>
+                        </ng-container>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input [(ngModel)]="employeeInfo.password" matInput [formControl]="password"
+                        [type]="hide ? 'password' : 'text'" placeholder="Password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="ErrorMap.get('password'); else clientSideValidationPassword">
+                        {{ErrorMap.get('password')}}
+                    </mat-error>
+                    <ng-template #clientSideValidationPassword>
+                        Please enter a valid password
+                    </ng-template>
+                </mat-form-field>
+            </div>
+            <div class="header header-border-top header-border-bottom header-background">
+                <h2>Personal Information</h2>
             </div>
 
             <div class="flex-space-between gap-20 margin-bottom">
@@ -47,7 +82,7 @@
             <div class="flex-space-between gap-20 margin-bottom">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Salary</mat-label>
-                    <input [(ngModel)]="employeeInfo.salary" [formControl]="salary" matInput placeholder="Salary">
+                    <input [(ngModel)]="employeeInfo.salary" [formControl]="salary"  matInput placeholder="Salary">
                     <mat-error *ngIf="ErrorMap.get('salary') || salary.invalid">
                         <ng-container>
                             <ng-container *ngIf="ErrorMap.get('salary'); else clientSideValidationSalary">
@@ -78,7 +113,7 @@
                 </mat-form-field>
             </div>
             <div class="header header-border-top header-border-bottom header-background">
-                <h2>Location of residence*</h2>
+                <h2>Location of residence</h2>
             </div>
             <div class="flex-space-between gap-20 margin-bottom">
                 <mat-form-field class="full-width" appearance="outline">
@@ -130,8 +165,7 @@
                         placeholder="Postal Code">
                     <mat-error *ngIf="ErrorMap.get('address.postalCode') || postalCode.invalid">
                         <ng-container>
-                            <ng-container
-                                *ngIf="ErrorMap.get('address.postalCode'); else clientSideValidationPostalCode">
+                            <ng-container *ngIf="ErrorMap.get('address.postalCode'); else clientSideValidationPostalCode">
                                 {{ErrorMap.get('address.postalCode')}}
                             </ng-container>
                             <ng-template #clientSideValidationPostalCode>
@@ -162,14 +196,14 @@
             <div class="flex-space-between gap-20 margin-bottom">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Longitude</mat-label>
-                    <input type="number" [(ngModel)]="employeeInfo.address.gpsCoordinate.longitude" matInput placeholder="Longitude">
+                    <input [(ngModel)]="employeeInfo.address.gpsCoordinate.longitude" matInput placeholder="Longitude">
                     <mat-error *ngIf="ErrorMap.get('address.gpscoordinate.longitude') != null">
                         {{ErrorMap.get('address.gpscoordinate.longitude')}}
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Latitude</mat-label>
-                    <input type="number" [(ngModel)]="employeeInfo.address.gpsCoordinate.latitude" matInput placeholder="Latitude">
+                    <input [(ngModel)]="employeeInfo.address.gpsCoordinate.latitude" matInput placeholder="Latitude">
                     <mat-error *ngIf="ErrorMap.get('address.gpscoordinate.latitude') != null">
                         {{ErrorMap.get('address.gpscoordinate.latitude')}}
                     </mat-error>
@@ -177,9 +211,7 @@
             </div>
             <div class="header-border-top button-container">
                 <button class="full-width add" mat-raised-button color="primary"
-                    (click)="emitUpdateEmployeeInfo()">Update</button>
-                <button *ngIf="isDriver" class="full-width fire" mat-raised-button color="primary"
-                    (click)="emitFire()">Fire</button>
+                    (click)="emitEmployeeInfo()">{{ButtonTitle}}</button>
             </div>
         </div>
     </div>

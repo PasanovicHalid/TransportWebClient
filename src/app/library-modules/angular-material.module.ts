@@ -42,7 +42,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 
 import { LayoutModule } from '@angular/cdk/layout';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -107,6 +107,7 @@ import { FormsModule } from '@angular/forms';
     MatTreeModule,
     MatRadioModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: []

@@ -1,11 +1,16 @@
 .container {
-    width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    app-add-employee-info {
+        width: 60%;
+    }
+}
+.truck-container {
     padding: 50px;
 
     .employee-container {
-        width: 55%;
+        width: 100%;
         background-color: var(--secondary-bg-color);
         border-radius: 20px;
         box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
