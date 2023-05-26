@@ -13,7 +13,6 @@ import { TrailerInfoComponent } from './trailer-table/trailer-info/trailer-info.
 import { TruckInfoComponent } from './truck-table/truck-info/truck-info.component';
 import { VanInfoComponent } from './van-table/van-info/van-info.component';
 import { AddVehicleInfoComponent } from './add-vehicle-info/add-vehicle-info.component';
-import { VehicleInfoComponent } from './vehicle-info/vehicle-info.component';
 import { CommonCodeModule } from '../common-code/common-code.module';
 
 
@@ -30,8 +29,7 @@ import { CommonCodeModule } from '../common-code/common-code.module';
     TrailerInfoComponent,
     TruckInfoComponent,
     VanInfoComponent,
-    AddVehicleInfoComponent,
-    VehicleInfoComponent,
+    AddVehicleInfoComponent
   ],
   imports: [
     CommonModule,

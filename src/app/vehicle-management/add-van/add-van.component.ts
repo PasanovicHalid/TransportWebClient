@@ -3,6 +3,7 @@ import { AddVanRequest } from '../contracts/requests/add-van-request';
 import { ToastrService } from 'ngx-toastr';
 import { CompanyService } from '../services/company.service';
 import { Router } from '@angular/router';
+import { VehicleService } from '../services/vehicle.service';
 
 @Component({
   selector: 'app-add-van',
@@ -14,13 +15,13 @@ export class AddVanComponent {
 
   ErrorMap : Map<string, string> = new Map<string, string>();
 
-  constructor(private companyService: CompanyService,
+  constructor(private vehicleService: VehicleService,
     private toastr: ToastrService,
     private router: Router) { }
 
   handleVehicleInfoEvent(vanInfo: AddVanRequest) {
     this.vanInfo = vanInfo;
-    this.companyService.registerVan(this.vanInfo).subscribe({
+    this.vehicleService.registerVan(this.vanInfo).subscribe({
       next: () => {
         this.toastr.success("Van added successfully!");
         this.router.navigate(['/vehicle-dashboard/vans']);

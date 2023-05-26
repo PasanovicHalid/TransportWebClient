@@ -72,14 +72,20 @@
             margin-right: -20px;
             margin-left: -20px;
             margin-bottom: -20px;
+            display: flex;
 
             button {
                 border-radius: 0px;
             }
 
-            .add{
+            .add {
                 background-color: #9DC08B;
                 color: var(--primary-color);
+            }
+
+            .fire {
+                background-color: #D21312;
+                color: var(--secondary-bg-color);
             }
         }
     }

@@ -7,6 +7,7 @@ import { EmployeeService } from "src/app/employee-management/services/employee.s
 import { TrailerInfo } from "../model/trailer-info";
 import { VehicleService } from "../services/vehicle.service";
 import { TrailerPageRequest } from "../contracts/requests/trailer-page-request";
+import { CompanyService } from "../services/company.service";
 
 export class TrailerDataSource extends DataSource<TrailerInfo> {
     private trailerSubject = new BehaviorSubject<TrailerInfo[]>([]);
@@ -16,7 +17,7 @@ export class TrailerDataSource extends DataSource<TrailerInfo> {
     public loading$ = this.loadingSubject.asObservable();
     public total$ = this.totalSubject.asObservable();
 
-    constructor(private vehicleService: VehicleService,
+    constructor(private companyService: CompanyService,
         private toastr: ToastrService) {
         super();
     }
@@ -33,7 +34,7 @@ export class TrailerDataSource extends DataSource<TrailerInfo> {
 
     loadTrailers(request: TrailerPageRequest = new TrailerPageRequest()) {
         this.loadingSubject.next(true);
-        this.vehicleService.getTrailers(request).subscribe({
+        this.companyService.getTrailers(request).subscribe({
             next: (response) => {
                 this.trailerSubject.next(response.items);
                 this.totalSubject.next(response.totalCount);

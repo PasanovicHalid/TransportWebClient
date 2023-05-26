@@ -32,4 +32,8 @@ export class TruckTableComponent implements OnInit {
     this.pageRequest.pageSize = pageEvent.pageSize;
     this.loadTrucks();
   }
+
+  public showTruckInfo(truckId: number) {
+    this.router.navigate(['/vehicle-dashboard/truck-info', truckId]);
+  }
 }

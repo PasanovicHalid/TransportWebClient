@@ -1,4 +1,5 @@
 export class AddVanRequest {
+    id: number = 0;
     width: number = 0;
     depth: number = 0;
     manufacturer: string = '';
