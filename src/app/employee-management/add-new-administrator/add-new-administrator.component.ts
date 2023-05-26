@@ -3,6 +3,7 @@ import { EmployeeInfo } from '../model/employee-info';
 import { CompanyService } from '../services/company.service';
 import { ToastrService } from 'ngx-toastr';
 import { RegisterAdministratorRequest } from '../contracts/requests/register-administrator-request';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-new-administrator',
@@ -14,7 +15,8 @@ export class AddNewAdministratorComponent {
   ErrorMap : Map<string, string> = new Map<string, string>();
 
   constructor(private companyService : CompanyService,
-    private toastr : ToastrService) { }
+    private toastr : ToastrService,
+    private router: Router) { }
 
   registerAdmin(employeeInfo: EmployeeInfo){
     let request : RegisterAdministratorRequest = new RegisterAdministratorRequest();
@@ -22,6 +24,7 @@ export class AddNewAdministratorComponent {
     this.companyService.registerAdministator(request).subscribe({
       next: (response) => {
         this.toastr.success("Administrator successfully registered");
+        this.router.navigate(['/employee-dashboard']);
       },
       error: (error) => {
         if(error.status == 400){

@@ -12,6 +12,9 @@ import { AddTrailerComponent } from './add-trailer/add-trailer.component';
 import { TrailerInfoComponent } from './trailer-table/trailer-info/trailer-info.component';
 import { TruckInfoComponent } from './truck-table/truck-info/truck-info.component';
 import { VanInfoComponent } from './van-table/van-info/van-info.component';
+import { AddVehicleInfoComponent } from './add-vehicle-info/add-vehicle-info.component';
+import { VehicleInfoComponent } from './vehicle-info/vehicle-info.component';
+import { CommonCodeModule } from '../common-code/common-code.module';
 
 
 
@@ -27,11 +30,14 @@ import { VanInfoComponent } from './van-table/van-info/van-info.component';
     TrailerInfoComponent,
     TruckInfoComponent,
     VanInfoComponent,
+    AddVehicleInfoComponent,
+    VehicleInfoComponent,
   ],
   imports: [
     CommonModule,
     AngularMaterialModule,
-    RouterModule
+    RouterModule,
+    CommonCodeModule
   ]
 })
 export class VehicleManagementModule { }

@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="employee-container">
+        <div class="title">
+            <ng-container *ngIf="isVan">
+                Add Van
+            </ng-container>
+            <ng-container *ngIf="!isVan">
+                Add Truck
+            </ng-container>
+        </div>
+        <div class="inputs">
+            <div class="header header-border-top header-border-bottom header-background">
+                <h2>Basic Information</h2>
+            </div>
+            <div class="flex-space-between gap-20">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Manufacturer</mat-label>
+                    <input [(ngModel)]="vehicleInfo.manufacturer" matInput placeholder="Manufacturer">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Model</mat-label>
+                    <input [(ngModel)]="vehicleInfo.model"  matInput placeholder="Model">
+                </mat-form-field>
+            </div>
+            
+            <div class="flex-space-between gap-20">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Date of Manufacturing</mat-label>
+                    <input matInput [(ngModel)]="vehicleInfo.dateOfManufacturing" [matDatepicker]="picker" placeholder="Date of Manufacturing">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="header header-border-top header-border-bottom header-background">
+                <h2>Dimensions</h2>
+            </div>
+            <div class="flex-space-between gap-20">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Width</mat-label>
+                    <input [(ngModel)]="vehicleInfo.width" matInput placeholder="Width">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Depth</mat-label>
+                    <input [(ngModel)]="vehicleInfo.depth" matInput placeholder="Depth">
+                </mat-form-field>
+            </div>
+            <ng-container *ngIf="isVan">
+                <div class="header header-border-top header-border-bottom header-background">
+                    <h2>Capacity</h2>
+                </div>
+                <div class="flex-space-between gap-20">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Width</mat-label>
+                        <input [(ngModel)]="vanInfo.widthCompartment" matInput placeholder="Width">
+                    </mat-form-field>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Depth</mat-label>
+                        <input [(ngModel)]="vanInfo.depthCompartment" matInput placeholder="Depth">
+                    </mat-form-field>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Height</mat-label>
+                        <input [(ngModel)]="vanInfo.heightCompartment" matInput placeholder="Height">
+                    </mat-form-field>
+                </div>
+                <div class="flex-space-between gap-20">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Maximum carry weight</mat-label>
+                        <input [(ngModel)]="vanInfo.maxCarryWeight" matInput placeholder="Maximum carry weight">
+                    </mat-form-field>
+                </div>
+            </ng-container>
+            <div class="header-border-top button-container">
+                <button *ngIf="isVan" class="full-width add" (click)="emitVanInfo()" mat-raised-button color="primary">Add</button>
+                <button *ngIf="!isVan" class="full-width add" (click)="emitVehicleInfo()" mat-raised-button color="primary">Add</button>
+            </div>
+        </div>
+    </div>
+</div>

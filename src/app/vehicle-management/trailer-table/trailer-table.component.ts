@@ -1,31 +1,37 @@
-import { Component } from '@angular/core';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import { Component, OnInit } from '@angular/core';
+import { TruckDataSource } from '../data-source/truck-data-source';
+import { TruckPageRequest } from '../contracts/requests/truck-page-request';
+import { VehicleService } from '../services/vehicle.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { TrailerDataSource } from '../data-source/trailer-data-source';
+import { TrailerPageRequest } from '../contracts/requests/trailer-page-request';
 
 @Component({
   selector: 'app-trailer-table',
   templateUrl: './trailer-table.component.html',
   styleUrls: ['./trailer-table.component.scss']
 })
-export class TrailerTableComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource : any = ELEMENT_DATA;
+export class TrailerTableComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'maxCarryWeight', 'volume', 'belongsToTruck'];
+  public dataSource : TrailerDataSource = new TrailerDataSource(this.vehicleService, this.toastr);
+  public pageRequest: TrailerPageRequest = new TrailerPageRequest();
+
+  constructor(private vehicleService: VehicleService,
+    private toastr: ToastrService,
+    private router: Router) { }
+
+  ngOnInit(): void {
+    this.dataSource.loadTrailers();
+  }
+
+  public loadTrailers() {
+    this.dataSource.loadTrailers(this.pageRequest);
+  }
+
+  public onPageChange(pageEvent: any) {
+    this.pageRequest.pageIndex = pageEvent.pageIndex;
+    this.pageRequest.pageSize = pageEvent.pageSize;
+    this.loadTrailers();
+  }
 }

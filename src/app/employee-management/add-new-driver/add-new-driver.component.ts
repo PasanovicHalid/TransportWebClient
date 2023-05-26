@@ -3,6 +3,7 @@ import { EmployeeInfo } from '../model/employee-info';
 import { ToastrService } from 'ngx-toastr';
 import { CompanyService } from '../services/company.service';
 import { RegisterDriverRequest } from '../contracts/requests/register-driver-request';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-new-driver',
@@ -13,7 +14,8 @@ export class AddNewDriverComponent {
   ErrorMap : Map<string, string> = new Map<string, string>();
 
   constructor(private companyService : CompanyService,
-    private toastr : ToastrService) { }
+    private toastr : ToastrService,
+    private router: Router) { }
 
   registerDriver(employeeInfo: EmployeeInfo){
     let request : RegisterDriverRequest = new RegisterDriverRequest();
@@ -21,6 +23,7 @@ export class AddNewDriverComponent {
     this.companyService.registerDriver(request).subscribe({
       next: (response) => {
         this.toastr.success("Driver successfully registered");
+        this.router.navigate(['/employee-dashboard']);
       },
       error: (error) => {
         if(error.status == 400){

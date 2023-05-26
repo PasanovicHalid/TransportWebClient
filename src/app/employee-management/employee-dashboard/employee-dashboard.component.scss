@@ -69,6 +69,12 @@
             overflow:hidden !important;
             background: inherit;
         }
+
+        tr.mat-mdc-row:hover {
+            cursor: pointer !important;
+            background-color: var(--accent-color) !important;
+            transition: 0.5s;
+        }
         
         .mat-mdc-paginator {
             border-top: 1px rgba(0, 0, 0, 0.12) solid;

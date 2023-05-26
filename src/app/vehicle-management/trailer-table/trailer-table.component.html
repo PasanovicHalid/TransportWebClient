@@ -1,34 +1,36 @@
+<div *ngIf="dataSource.loading$ | async" class="spinner-container">
+    <mat-spinner diameter="250"></mat-spinner>
+</div>
 <div class="container">
     <table mat-table [dataSource]="dataSource">
 
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
-            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id. </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        <ng-container matColumnDef="maxCarryWeight">
+            <th mat-header-cell *matHeaderCellDef> Maximum carry weight </th>
+            <td mat-cell *matCellDef="let element"> {{element.capacity.maxCarryWeight}} </td>
         </ng-container>
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-            <th mat-header-cell *matHeaderCellDef> Weight </th>
-            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        <ng-container matColumnDef="volume">
+            <th mat-header-cell *matHeaderCellDef> Volume </th>
+            <td mat-cell *matCellDef="let element"> {{element.capacity.volume.depth}}D - {{element.capacity.volume.height}}H - {{element.capacity.volume.width}}W </td>
         </ng-container>
 
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol">
-            <th mat-header-cell *matHeaderCellDef> Symbol </th>
-            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        <ng-container matColumnDef="belongsToTruck">
+            <th mat-header-cell *matHeaderCellDef> Belongs to truck </th>
+            <td mat-cell *matCellDef="let element"> {{element.vehicleId | empty}}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-paginator [pageSize]="10" showFirstLastButtons role="navigation" aria-label="Select page of periodic elements">
-    </mat-paginator>
+    <mat-paginator [pageSize]="pageRequest.pageSize" [pageIndex]="pageRequest.pageIndex"
+            [length]="dataSource.total$ | async" showFirstLastButtons role="navigation"
+            aria-label="Select page of periodic elements"
+            (page)="onPageChange($event)">
+        </mat-paginator>
 </div>
