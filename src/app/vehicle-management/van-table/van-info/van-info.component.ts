@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { VanInfo } from '../../model/van-info';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { VehicleService } from '../../services/vehicle.service';
+import { VehicleService } from '../../../services/vehicle.service';
 import { AddVanRequest } from '../../contracts/requests/add-van-request';
+import { VanInfo } from 'src/app/model/entities/van-info';
 
 @Component({
   selector: 'app-van-info',

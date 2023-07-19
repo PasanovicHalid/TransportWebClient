@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { VanPageRequest } from '../contracts/requests/van-page-request';
 import { VanDataSource } from '../data-source/van-data-source';
-import { VehicleService } from '../services/vehicle.service';
+import { VehicleService } from '../../services/vehicle.service';
 
 @Component({
   selector: 'app-van-table',

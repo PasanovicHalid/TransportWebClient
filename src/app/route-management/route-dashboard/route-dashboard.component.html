@@ -4,12 +4,21 @@
             <div class="info">
                 <div class="employee-type">
                     <mat-icon>route</mat-icon>
-                    <h1>Routes</h1>
+                    <h1>Finished Routes</h1>
                 </div>
-                <h2>Number:</h2>
+                <h2>Number: {{this.dashboardData.totalCompletedTransportations}}</h2>
+            </div>
+        </div>
+        <div class="card employee-number">
+            <div class="info">
+                <div class="employee-type">
+                    <mat-icon>route</mat-icon>
+                    <h1>Pending Routes</h1>
+                </div>
+                <h2>Number: {{this.dashboardData.totalPendingTransportations}}</h2>
             </div>
             <div class="card-buttons">
-                <button mat-raised-button>Add</button>
+                <button mat-raised-button routerLink="/route-dashboard/add-route">Add</button>
             </div>
         </div>
         <div class="card admin-number">
@@ -18,42 +27,59 @@
                     <mat-icon>straighten</mat-icon>
                     <h1>Kilometers</h1>
                 </div>
-                <h2>Driven:</h2>
+                <h2>Driven: {{this.dashboardData.totalKilometersDriven | number}} KM</h2>
             </div>
         </div>
     </div>
     <div class="displayed-employees">
+        <div *ngIf="dataSource.loading$ | async" class="spinner-container">
+            <mat-spinner diameter="250"></mat-spinner>
+        </div>
         <table mat-table [dataSource]="dataSource">
 
-            <!-- Position Column -->
-            <ng-container matColumnDef="position">
-                <th mat-header-cell *matHeaderCellDef> No. </th>
-                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            <ng-container matColumnDef="start">
+                <th mat-header-cell *matHeaderCellDef> Start </th>
+                <td mat-cell *matCellDef="let element" (click)="showRouteDetails(element.id)"> {{element.start | date: 'dd MMM yyyy'}} </td>
             </ng-container>
 
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            <ng-container matColumnDef="requiredFor">
+                <th mat-header-cell *matHeaderCellDef> Required For </th>
+                <td mat-cell *matCellDef="let element" (click)="showRouteDetails(element.id)"> {{element.requiredFor | date: 'dd MMM yyyy'}} </td>
             </ng-container>
 
-            <!-- Weight Column -->
-            <ng-container matColumnDef="weight">
-                <th mat-header-cell *matHeaderCellDef> Weight </th>
-                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            <ng-container matColumnDef="transporting">
+                <th mat-header-cell *matHeaderCellDef> Transporting </th>
+                <td mat-cell *matCellDef="let element" (click)="showRouteDetails(element.id)"> {{element.transporting.description}} (Weight: {{element.transporting.weight}} KG) </td>
             </ng-container>
 
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-                <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            <ng-container matColumnDef="destination">
+                <th mat-header-cell *matHeaderCellDef> Destination </th>
+                <td mat-cell *matCellDef="let element" (click)="showRouteDetails(element.id)"> {{element.destination.street}}, {{element.destination.city}}, {{element.destination.state}}, {{element.destination.postalCode}}, {{element.destination.country}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="cost">
+                <th mat-header-cell *matHeaderCellDef> Cost </th>
+                <td mat-cell *matCellDef="let element" (click)="showRouteDetails(element.id)"> {{getMoneyString(element.cost) | empty}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="received">
+                <th mat-header-cell *matHeaderCellDef> Received </th>
+                <td mat-cell *matCellDef="let element" (click)="showRouteDetails(element.id)"> {{getMoneyString(element.received)}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="drivenBy">
+                <th mat-header-cell *matHeaderCellDef> Driven By </th>
+                <td mat-cell *matCellDef="let element" (click)="showRouteDetails(element.id)"> {{getFullNameOfDriver(element.drivenBy) | empty}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
 
-        <mat-paginator [pageSize]="10" showFirstLastButtons role="navigation" aria-label="Select page of periodic elements">
+        <mat-paginator [pageSize]="pageRequest.pageSize" [pageIndex]="pageRequest.pageIndex"
+            [length]="dataSource.total$ | async" showFirstLastButtons role="navigation"
+            aria-label="Select page of periodic elements"
+            (page)="onPageChange($event)">
         </mat-paginator>
     </div>
 </div>

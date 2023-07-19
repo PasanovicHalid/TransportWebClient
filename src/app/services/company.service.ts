@@ -1,13 +1,13 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { RegisterAdministratorRequest } from '../employee-management/contracts/requests/register-administrator-request';
 import { Observable } from 'rxjs';
-import { AddTruckRequest } from '../contracts/requests/add-truck-request';
-import { AddVanRequest } from '../contracts/requests/add-van-request';
-import { AddTrailerRequest } from '../contracts/requests/add-trailer-request';
-import { UpdateTrailerRequest } from '../contracts/requests/update-trailer-request';
-import { TrailerInfo } from '../model/trailer-info';
-import { TrailerPageRequest } from '../contracts/requests/trailer-page-request';
-import { PaginationResponse } from 'src/app/common-code/interfaces/pagination-response';
+import { PaginationResponse } from '../common-code/interfaces/pagination-response';
+import { TrailerInfo } from '../model/entities/trailer-info';
+import { AddTrailerRequest } from '../vehicle-management/contracts/requests/add-trailer-request';
+import { TrailerPageRequest } from '../vehicle-management/contracts/requests/trailer-page-request';
+import { UpdateTrailerRequest } from '../vehicle-management/contracts/requests/update-trailer-request';
+import { EmployeeInfo } from '../model/entities/employee-info';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,24 @@ export class CompanyService {
   basePath: string = "/api/company/"
 
   constructor(private http: HttpClient) { }
+
+  registerAdministator(registerAdministratorRequest: RegisterAdministratorRequest) : Observable<unknown> {
+    return this.http.post(
+      this.basePath + "register/admin",
+      registerAdministratorRequest.employeeInfo,
+      {
+        headers: this.headers
+      });
+  }
+
+  registerDriver(registerDriverRequest: RegisterAdministratorRequest) : Observable<unknown> {
+    return this.http.post(
+      this.basePath + "register/driver",
+      registerDriverRequest.employeeInfo,
+      {
+        headers: this.headers
+      });
+  }
 
   registerTrailer(trailerInfo: AddTrailerRequest) : Observable<unknown> {
     return this.http.post(
@@ -64,4 +82,11 @@ export class CompanyService {
       });
   }
 
+  getDriversByCompany(): Observable<EmployeeInfo[]> {
+    return this.http.get<EmployeeInfo[]>(
+      this.basePath + "drivers-by-company",
+      { 
+        headers: this.headers 
+      });
+  }
 }

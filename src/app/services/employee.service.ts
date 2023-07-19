@@ -1,10 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EmployeePageRequest } from '../model/employee-page-request';
 import { Observable } from 'rxjs';
 import { PaginationResponse } from 'src/app/common-code/interfaces/pagination-response';
-import { GetEmployeeResponse } from '../contracts/response/get-employee-response';
-import { EmployeeInfo } from '../model/employee-info';
+import { EmployeeInfo } from '../model/entities/employee-info';
+import { GetEmployeeResponse } from '../employee-management/contracts/response/get-employee-response';
+import { EmployeePageRequest } from '../employee-management/model/employee-page-request';
+import { EmployeeDashboardResponse } from '../employee-management/contracts/response/employee-dashboard-response';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,14 @@ export class EmployeeService {
   getEmployeeById(id: number) : Observable<GetEmployeeResponse> {
     return this.http.get<GetEmployeeResponse>(
       this.basePath + "information/" + id,
+      {
+        headers: this.headers
+      });
+  }
+
+  getEmployeeDashboardInfo() : Observable<EmployeeDashboardResponse> {
+    return this.http.get<EmployeeDashboardResponse>(
+      this.basePath + "dashboard",
       {
         headers: this.headers
       });

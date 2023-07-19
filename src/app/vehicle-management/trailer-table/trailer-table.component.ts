@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { TruckDataSource } from '../data-source/truck-data-source';
 import { TruckPageRequest } from '../contracts/requests/truck-page-request';
-import { VehicleService } from '../services/vehicle.service';
+import { VehicleService } from '../../services/vehicle.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { TrailerDataSource } from '../data-source/trailer-data-source';
 import { TrailerPageRequest } from '../contracts/requests/trailer-page-request';
-import { CompanyService } from '../services/company.service';
+import { CompanyService } from 'src/app/services/company.service';
 
 @Component({
   selector: 'app-trailer-table',

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="employee-container">
         <div class="title">
-            Route info
+            Route Info
         </div>
         <div class="inputs">
             <div class="header header-border-top header-border-bottom header-background">
@@ -9,64 +9,156 @@
             </div>
             <div class="flex-space-between gap-20">
                 <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>First Name</mat-label>
-                    <input matInput placeholder="First Name">
+                    <mat-label>Start</mat-label>
+                    <input matInput [(ngModel)]="this.data.start" [matDatepicker]="departurePicker"
+                        placeholder="Date of Departure">
+                    <mat-datepicker-toggle matSuffix [for]="departurePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #departurePicker></mat-datepicker>
                 </mat-form-field>
                 <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Middle Name</mat-label>
-                    <input matInput placeholder="Middle Name">
-                </mat-form-field>
-                <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Last Name</mat-label>
-                    <input matInput placeholder="Last Name">
-                </mat-form-field>
-            </div>
-            
-            <div class="flex-space-between gap-20">
-                <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Salary</mat-label>
-                    <input matInput placeholder="Salary">
+                    <mat-label>Required For</mat-label>
+                    <input matInput [(ngModel)]="this.data.requiredFor" [matDatepicker]="arrivalPicker"
+                        placeholder="Date of Arrival">
+                    <mat-datepicker-toggle matSuffix [for]="arrivalPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #arrivalPicker></mat-datepicker>
                 </mat-form-field>
             </div>
             <div class="header header-border-top header-border-bottom header-background">
-                <h2>Location of residence</h2>
+                <h2>Cargo</h2>
+            </div>
+            <div class="flex-space-between gap-20">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <input [(ngModel)]="this.data.transporting.description" matInput placeholder="Description">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Weight</mat-label>
+                    <input [(ngModel)]="this.data.transporting.weight" type="number" matInput placeholder="Weight">
+                </mat-form-field>
+            </div>
+            <div class="flex-space-between gap-20">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Width</mat-label>
+                    <input [(ngModel)]="this.data.transporting.volume.width" type="number" matInput placeholder="Width">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Depth</mat-label>
+                    <input [(ngModel)]="this.data.transporting.volume.depth" type="number" matInput placeholder="Depth">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Height</mat-label>
+                    <input [(ngModel)]="this.data.transporting.volume.height" type="number" matInput
+                        placeholder="Height">
+                </mat-form-field>
+            </div>
+            <div class="header header-border-top header-border-bottom header-background">
+                <h2>Money Received</h2>
+            </div>
+            <div class="flex-space-between gap-20">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Amount</mat-label>
+                    <input [(ngModel)]="this.data.received.amount" type="number" matInput placeholder="Amount">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Currency</mat-label>
+                    <input readonly [(ngModel)]="this.data.received.currency" matInput placeholder="Currency">
+                </mat-form-field>
+            </div>
+            <div class="header header-border-top header-border-bottom header-background">
+                <h2>Destination</h2>
             </div>
             <div class="flex-space-between gap-20">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Street</mat-label>
-                    <input matInput placeholder="Street">
+                    <input [(ngModel)]="this.data.destination.street" matInput placeholder="Street">
                 </mat-form-field>
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>City</mat-label>
-                    <input matInput placeholder="City">
+                    <input [(ngModel)]="this.data.destination.city" matInput placeholder="City">
                 </mat-form-field>
             </div>
             <div class="flex-space-between gap-20">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>State</mat-label>
-                    <input matInput placeholder="State">
+                    <input [(ngModel)]="this.data.destination.state" matInput placeholder="State">
                 </mat-form-field>
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Postal Code</mat-label>
-                    <input matInput placeholder="Postal Code">
+                    <input [(ngModel)]="this.data.destination.postalCode" matInput placeholder="Postal Code">
                 </mat-form-field>
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Country</mat-label>
-                    <input matInput placeholder="Country">
+                    <input [(ngModel)]="this.data.destination.country" matInput placeholder="Country">
                 </mat-form-field>
             </div>
             <div class="flex-space-between gap-20">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Longitude</mat-label>
-                    <input matInput placeholder="Longitude">
+                    <input [(ngModel)]="this.data.destination.gpsCoordinate.longitude" type="number" matInput
+                        placeholder="Longitude">
                 </mat-form-field>
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Latitude</mat-label>
-                    <input matInput placeholder="Latitude">
+                    <input [(ngModel)]="this.data.destination.gpsCoordinate.latitude" type="number" matInput
+                        placeholder="Latitude">
                 </mat-form-field>
             </div>
             <div class="header-border-top button-container">
-                <button class="full-width add" mat-raised-button color="primary">Add Employee</button>
+                <button class="full-width add" mat-raised-button color="primary" (click)="changeRouteInfo()">Change
+                    Route</button>
+                <button class="full-width fire" mat-raised-button color="primary" (click)="deleteRoute()">Delete Route</button>
+            </div>
+        </div>
+    </div>
+    <div class="resolution-container">
+        <div class="title">
+            Resolution
+        </div>
+        <div class="inputs">
+            <div class="header header-border-top header-border-bottom header-background">
+                <h2>Driver</h2>
+            </div>
+            <div class="flex-space-between gap-20">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Driver</mat-label>
+                    <mat-select [(ngModel)]="this.resolutionData.driverId">
+                        <mat-option *ngFor="let driver of driverOptions" [value]="driver.id">
+                            {{driver.firstName}} {{driver.middleName}} {{driver.lastName}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="header header-border-top header-border-bottom header-background">
+                <h2>Cost</h2>
+            </div>
+            <div class="flex-space-between gap-20">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Amount</mat-label>
+                    <input [(ngModel)]="this.resolutionData.cost.amount" type="number" matInput placeholder="Amount">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Currency</mat-label>
+                    <input [(ngModel)]="this.resolutionData.cost.currency" matInput placeholder="Currency">
+                </mat-form-field>
+            </div>
+            <div class="header header-border-top header-border-bottom header-background">
+                <h2>Start location</h2>
+            </div>
+            <div class="flex-space-between gap-20">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Longitude</mat-label>
+                    <input [(ngModel)]="this.resolutionData.startLocation.longitude" type="number" matInput
+                        placeholder="Longitude">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Latitude</mat-label>
+                    <input [(ngModel)]="this.resolutionData.startLocation.latitude" type="number" matInput
+                        placeholder="Latitude">
+                </mat-form-field>
+            </div>
+            <div class="header-border-top button-container">
+                <button class="full-width add" mat-raised-button color="primary" (click)="addResolution()">Change/Add
+                    Resolution</button>
             </div>
         </div>
     </div>

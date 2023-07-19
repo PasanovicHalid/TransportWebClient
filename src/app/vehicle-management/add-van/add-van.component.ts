@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { AddVanRequest } from '../contracts/requests/add-van-request';
 import { ToastrService } from 'ngx-toastr';
-import { CompanyService } from '../services/company.service';
 import { Router } from '@angular/router';
-import { VehicleService } from '../services/vehicle.service';
+import { VehicleService } from '../../services/vehicle.service';
 
 @Component({
   selector: 'app-add-van',

@@ -1,14 +1,15 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TruckPageRequest } from '../contracts/requests/truck-page-request';
-import { VanPageRequest } from '../contracts/requests/van-page-request';
-import { TrailerPageRequest } from '../contracts/requests/trailer-page-request';
+import { TruckPageRequest } from '../vehicle-management/contracts/requests/truck-page-request';
+import { VanPageRequest } from '../vehicle-management/contracts/requests/van-page-request';
+import { TrailerPageRequest } from '../vehicle-management/contracts/requests/trailer-page-request';
 import { Observable } from 'rxjs';
 import { PaginationResponse } from 'src/app/common-code/interfaces/pagination-response';
-import { AddTruckRequest } from '../contracts/requests/add-truck-request';
-import { AddVanRequest } from '../contracts/requests/add-van-request';
-import { VanInfo } from '../model/van-info';
-import { TruckInfo } from '../model/truck-info';
+import { AddTruckRequest } from '../vehicle-management/contracts/requests/add-truck-request';
+import { AddVanRequest } from '../vehicle-management/contracts/requests/add-van-request';
+import { TruckInfo } from 'src/app/model/entities/truck-info';
+import { VanInfo } from 'src/app/model/entities/van-info';
+import { VehicleDashboardResponse } from '../vehicle-management/contracts/response/vehicle-dashboard-response';
 
 @Injectable({
   providedIn: 'root'
@@ -102,6 +103,13 @@ export class VehicleService {
     return this.http.put(
       this.basePath + "truck/" + truckInfo.id,
       truckInfo,
+      {
+        headers: this.headers
+      });
+  }
+  getVehicleDashboardInfo() : Observable<VehicleDashboardResponse> {
+    return this.http.get<VehicleDashboardResponse>(
+      this.basePath + "dashboard",
       {
         headers: this.headers
       });

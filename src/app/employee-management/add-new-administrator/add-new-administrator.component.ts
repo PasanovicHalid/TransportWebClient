@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { EmployeeInfo } from '../model/employee-info';
-import { CompanyService } from '../services/company.service';
+import { EmployeeInfo } from '../../model/entities/employee-info';
+import { CompanyService } from '../../services/company.service';
 import { ToastrService } from 'ngx-toastr';
 import { RegisterAdministratorRequest } from '../contracts/requests/register-administrator-request';
 import { Router } from '@angular/router';

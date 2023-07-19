@@ -17,6 +17,7 @@ import { VehicleManagementModule } from './vehicle-management/vehicle-management
 import { RouteManagementModule } from './route-management/route-management.module';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonCodeModule } from './common-code/common-code.module';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,10 @@ import { CommonCodeModule } from './common-code/common-code.module';
     }),
     ToastrModule.forRoot(),
   ],
-  providers: [JwtHelperService],
+  providers: [
+    JwtHelperService,
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

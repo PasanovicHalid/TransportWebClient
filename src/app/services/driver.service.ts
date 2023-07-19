@@ -1,9 +1,6 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PaginationResponse } from 'src/app/common-code/interfaces/pagination-response';
-import { GetEmployeeResponse } from '../contracts/response/get-employee-response';
-import { EmployeePageRequest } from '../model/employee-page-request';
 
 @Injectable({
   providedIn: 'root'

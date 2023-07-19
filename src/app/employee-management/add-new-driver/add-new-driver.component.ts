@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { EmployeeInfo } from '../model/employee-info';
+import { EmployeeInfo } from '../../model/entities/employee-info';
 import { ToastrService } from 'ngx-toastr';
-import { CompanyService } from '../services/company.service';
+import { CompanyService } from '../../services/company.service';
 import { RegisterDriverRequest } from '../contracts/requests/register-driver-request';
 import { Router } from '@angular/router';
 

@@ -1,4 +1,4 @@
-import { Capacity } from "./capacity";
+import { Capacity } from "../value-objects/capacity";
 
 export class TrailerInfo {
     id: number = 0;

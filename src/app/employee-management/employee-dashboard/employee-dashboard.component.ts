@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EmployeeDataSource } from '../data-source/employee-data-source';
-import { EmployeeService } from '../services/employee.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { EmployeePageRequest } from '../model/employee-page-request';
-import { EmployeeInfo } from '../model/employee-info';
+import { EmployeeInfo } from '../../model/entities/employee-info';
+import { EmployeeService } from 'src/app/services/employee.service';
+import { EmployeeDashboardResponse } from '../contracts/response/employee-dashboard-response';
 
 @Component({
   selector: 'app-employee-dashboard',
@@ -15,6 +16,7 @@ export class EmployeeDashboardComponent implements OnInit {
   displayedColumns: string[] = ['firstName', 'middleName', 'lastName', 'email', 'role', 'salary'];
   public dataSource: EmployeeDataSource = new EmployeeDataSource(this.employeeService, this.toastr);
   public pageRequest: EmployeePageRequest = new EmployeePageRequest();
+  public employeeDashboardData: EmployeeDashboardResponse = new EmployeeDashboardResponse();
 
 
   constructor(private employeeService: EmployeeService,
@@ -23,6 +25,15 @@ export class EmployeeDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource.loadEmployees();
+
+    this.employeeService.getEmployeeDashboardInfo().subscribe({
+      next: (response) => {
+        this.employeeDashboardData = response;
+      },
+      error: (error) => {
+        this.toastr.error(error.error.title);
+      }
+    });
   }
 
   public loadEmployees() {

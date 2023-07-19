@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { VehicleInfo } from '../model/vehicle-info';
-import { CompanyService } from '../services/company.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { VehicleService } from '../services/vehicle.service';
+import { VehicleService } from '../../services/vehicle.service';
+import { VehicleInfo } from 'src/app/model/entities/vehicle-info';
 
 @Component({
   selector: 'app-add-truck',

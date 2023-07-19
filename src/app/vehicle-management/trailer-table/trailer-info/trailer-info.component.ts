@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TrailerInfo } from '../../model/trailer-info';
+import { TrailerInfo } from '../../../model/entities/trailer-info';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CompanyService } from '../../services/company.service';
 import { UpdateTrailerRequest } from '../../contracts/requests/update-trailer-request';
+import { CompanyService } from 'src/app/services/company.service';
 
 @Component({
   selector: 'app-trailer-info',

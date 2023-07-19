@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { VehicleInfo } from '../model/vehicle-info';
 import { AddVanRequest } from '../contracts/requests/add-van-request';
+import { VehicleInfo } from 'src/app/model/entities/vehicle-info';
 
 @Component({
   selector: 'app-add-vehicle-info',

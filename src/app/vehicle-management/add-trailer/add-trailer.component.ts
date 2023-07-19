@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AddTrailerRequest } from '../contracts/requests/add-trailer-request';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CompanyService } from '../services/company.service';
+import { CompanyService } from 'src/app/services/company.service';
 
 @Component({
   selector: 'app-add-trailer',

@@ -1,4 +1,4 @@
-import { Dimensions } from "./dimensions";
+import { Dimensions } from "../value-objects/dimensions";
 
 export class TruckInfo {
     id: number = 0;

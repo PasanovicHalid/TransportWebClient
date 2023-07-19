@@ -1,5 +1,5 @@
-import { Capacity } from "./capacity";
-import { Dimensions } from "./dimensions";
+import { Capacity } from "../value-objects/capacity";
+import { Dimensions } from "../value-objects/dimensions";
 
 export class VanInfo {
     id: number = 0;

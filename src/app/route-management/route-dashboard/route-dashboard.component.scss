@@ -32,8 +32,12 @@
                 align-items: center;
                 mat-icon {
                     margin-left: 20px;
+                    margin-right: 20px;
                     transform: scale(3);
+                    overflow: visible !important;
                 }
+
+                
             }
 
             .card-buttons {
@@ -77,5 +81,25 @@
             border-bottom-left-radius: inherit;
             border-bottom-right-radius: inherit;
         }
+
+        .spinner-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 100%;
+            width: 100%;
+        }
+
+        tr.mat-mdc-row:hover {
+            cursor: pointer !important;
+            background-color: var(--accent-color) !important;
+            transition: 0.5s;
+        }
+    }
+}
+
+::ng-deep {
+    .mat-mdc-progress-spinner {
+        --mdc-circular-progress-active-indicator-color: var(--accent-color) !important;
     }
 }

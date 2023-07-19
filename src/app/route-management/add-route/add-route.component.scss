@@ -95,4 +95,10 @@
     .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
         border-color: var(--primary-color);
     }
+
+    .mat-datepicker-content {
+        background-color: var(--accent-color) !important;
+        border-radius: 20px !important;
+        box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
+    }
 }

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { EmployeeService } from '../services/employee.service';
-import { EmployeeInfo } from '../model/employee-info';
-import { GpsCoordinate } from '../model/gps-coordinate';
+import { EmployeeInfo } from '../../model/entities/employee-info';
+import { GpsCoordinate } from '../../model/value-objects/gps-coordinate';
 import { FirstLetterLowercasePipe } from 'src/app/common-code/pipes/first-letter-lowercase-pipe';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-driver-info',
@@ -16,7 +16,7 @@ export class DriverInfoComponent implements OnInit {
 
   employeeInfo: EmployeeInfo = new EmployeeInfo();
 
-  ErrorMap : Map<string, string> = new Map<string, string>();
+  ErrorMap: Map<string, string> = new Map<string, string>();
 
   title: string = 'Driver Info';
 
@@ -36,7 +36,19 @@ export class DriverInfoComponent implements OnInit {
     this.employeeService.getEmployeeById(this.userId).subscribe(
       {
         next: (response) => {
-          this.employeeInfo = response;
+          this.employeeInfo = new EmployeeInfo();
+          
+          this.employeeInfo.initializeEmployeeInfo(response.id, 
+            response.role, 
+            response.email,
+            response.password, 
+            response.phoneNumber, 
+            response.firstName, 
+            response.middleName, 
+            response.lastName, 
+            response.salary, 
+            response.address);
+          
           this.setGpsCoordinates();
           this.loading = false;
         },

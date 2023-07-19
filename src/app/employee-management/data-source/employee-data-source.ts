@@ -1,9 +1,9 @@
 import { CollectionViewer, DataSource } from "@angular/cdk/collections";
-import { EmployeeInfo } from "../model/employee-info";
+import { EmployeeInfo } from "../../model/entities/employee-info";
 import { BehaviorSubject, Observable } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 import { EmployeePageRequest } from "../model/employee-page-request";
-import { EmployeeService } from "../services/employee.service";
+import { EmployeeService } from "src/app/services/employee.service";
 
 export class EmployeeDataSource extends DataSource<EmployeeInfo> {
     private employeeSubject = new BehaviorSubject<EmployeeInfo[]>([]);

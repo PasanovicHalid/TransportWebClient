@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { EmployeeInfo } from '../model/employee-info';
-import { GpsCoordinate } from '../model/gps-coordinate';
-import { EmployeeService } from '../services/employee.service';
+import { EmployeeInfo } from '../../model/entities/employee-info';
+import { GpsCoordinate } from '../../model/value-objects/gps-coordinate';
 import { ToastrService } from 'ngx-toastr';
-import { DriverService } from '../services/driver.service';
+import { DriverService } from 'src/app/services/driver.service';
 
 @Component({
   selector: 'app-employee-info',

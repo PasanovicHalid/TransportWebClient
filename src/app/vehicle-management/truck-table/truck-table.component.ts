@@ -3,7 +3,7 @@ import { TruckDataSource } from '../data-source/truck-data-source';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { TruckPageRequest } from '../contracts/requests/truck-page-request';
-import { VehicleService } from '../services/vehicle.service';
+import { VehicleService } from '../../services/vehicle.service';
 
 @Component({
   selector: 'app-truck-table',

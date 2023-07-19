@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { EmployeeInfo } from '../model/employee-info';
+import { EmployeeInfo } from '../../model/entities/employee-info';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({

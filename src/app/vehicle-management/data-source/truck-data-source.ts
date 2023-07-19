@@ -2,9 +2,8 @@ import { DataSource, CollectionViewer } from "@angular/cdk/collections";
 import { ToastrService } from "ngx-toastr";
 import { BehaviorSubject, Observable } from "rxjs";
 import { TruckPageRequest } from "../contracts/requests/truck-page-request";
-import { TruckInfo } from "../model/truck-info";
-import { VehicleService } from "../services/vehicle.service";
-import { VehicleInfo } from "../model/vehicle-info";
+import { VehicleService } from "../../services/vehicle.service";
+import { VehicleInfo } from "src/app/model/entities/vehicle-info";
 
 export class TruckDataSource extends DataSource<VehicleInfo> {
     private truckSubject = new BehaviorSubject<VehicleInfo[]>([]);
