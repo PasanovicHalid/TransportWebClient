@@ -6,4 +6,5 @@ export class TruckInfo {
     model: string = '';
     dateOfManufacturing : Date = new Date();
     dimensions: Dimensions = new Dimensions();
+    driverId: number = 0;
 }

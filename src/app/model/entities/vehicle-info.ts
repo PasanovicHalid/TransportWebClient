@@ -5,4 +5,5 @@ export class VehicleInfo {
     dateOfManufacturing : Date = new Date();
     width: number = 0;
     depth: number = 0;
+    driverId: number = 0;
 }

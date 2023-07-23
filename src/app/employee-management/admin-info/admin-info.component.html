@@ -2,11 +2,14 @@
     <mat-spinner diameter="250"></mat-spinner>
 </div>
 <ng-template #content>
-    <app-employee-info 
-    [employeeInfo]="employeeInfo"
-    [title]="title"
-    [ErrorMap]="ErrorMap"
-    (updateEmployeeInfoEvent)="handleUpdateDriver($event)">
+    <div class="container">
+        <app-employee-info 
+        [employeeInfo]="employeeInfo"
+        [title]="title"
+        [ErrorMap]="ErrorMap"
+        (updateEmployeeInfoEvent)="handleUpdateDriver($event)">
 
-    </app-employee-info>
+        </app-employee-info>
+    </div>
+    
 </ng-template>

@@ -10,6 +10,7 @@ import { AddVanRequest } from '../vehicle-management/contracts/requests/add-van-
 import { TruckInfo } from 'src/app/model/entities/truck-info';
 import { VanInfo } from 'src/app/model/entities/van-info';
 import { VehicleDashboardResponse } from '../vehicle-management/contracts/response/vehicle-dashboard-response';
+import { VehicleInfo } from '../model/entities/vehicle-info';
 
 @Injectable({
   providedIn: 'root'
@@ -110,6 +111,30 @@ export class VehicleService {
   getVehicleDashboardInfo() : Observable<VehicleDashboardResponse> {
     return this.http.get<VehicleDashboardResponse>(
       this.basePath + "dashboard",
+      {
+        headers: this.headers
+      });
+  }
+
+  getVehicleById(vehicleId: number) : Observable<VehicleInfo> {
+    return this.http.get<VehicleInfo>(
+      this.basePath + vehicleId,
+      {
+        headers: this.headers
+      });
+  }
+
+  addTrailerToVehicle(vehicleId: number, trailerId: number) : Observable<unknown> {
+    return this.http.post(
+      this.basePath + `${vehicleId}/assign-trailer/${trailerId}`,
+      {
+        headers: this.headers
+      });
+  }
+
+  unassignTrailerFromVehicle(tailerId: number) : Observable<unknown> {
+    return this.http.post(
+      this.basePath + `${tailerId}/unassign-trailer`,
       {
         headers: this.headers
       });

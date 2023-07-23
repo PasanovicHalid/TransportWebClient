@@ -1,12 +1,113 @@
 .content{
-    animation: 2s ease-out 0s 1 fadeIn;
+    min-height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2%;
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
+.title {
+    text-align: center;
+    font-size: 2.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    background-color: var(--accent-color);
+    border-radius: 20px;
+}
+
+.spacer {
+    flex-grow: 1;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: var(--secondary-bg-color);
+    box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
+}
+
+.charts {
+    border-radius: 20px;
+    background-color: var(--secondary-bg-color);
+    box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
+    overflow: hidden;
+}
+
+.charts-inline{
+}
+
+.rotate {
+    transform: rotate(80deg) scale(3) !important;
+}
+
+.vehicle-card-background {
+    background-color: #FFD95A;
+}
+
+.inflow-card-background {
+    background-color: #9DC08B;
+}
+
+.routes-card-background {
+    background-color: #FFF7D4;
+}
+
+.employee-card-background {
+    background-color: #FFD95A;
+}
+
+.outflow-card-background {
+    background-color: #c0938b;
+}
+
+.card {
+    width: 18%;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
+
+    .info {
+        padding: 10px;
     }
-    100% {
-        opacity: 1;
+
+    .header-of-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        mat-icon {
+            margin-left: 20px;
+            margin-right: 20px;
+            transform: scale(3);
+            overflow: visible !important;
+        }
+    }
+
+    .card-buttons {
+        button {
+            width: 100%;
+            border-radius: 0;
+            background-color: #9DC08B;
+        }
+    }
+
+    .select-table-button {
+        button {
+            width: 100%;
+            border-radius: 0;
+            background-color: var(--primary-color);
+            color: var(--secondary-bg-color);
+        }
+
+    }
+
+    .active-button {
+        background-color: var(--accent-color) !important;
+        color: var(--primary-color) !important;
     }
 }

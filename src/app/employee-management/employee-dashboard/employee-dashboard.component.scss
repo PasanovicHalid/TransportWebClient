@@ -16,6 +16,9 @@
         box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
 
         .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             width: 20%;
             overflow: hidden;
             border-radius: 20px;

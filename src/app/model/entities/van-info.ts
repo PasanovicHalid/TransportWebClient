@@ -8,4 +8,5 @@ export class VanInfo {
     dateOfManufacturing : Date = new Date();
     dimensions: Dimensions = new Dimensions();
     capacity: Capacity = new Capacity();
+    driverId: number = 0;
 }

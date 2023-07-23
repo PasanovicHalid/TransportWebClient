@@ -46,7 +46,8 @@ export class AdminInfoComponent implements OnInit {
             response.middleName, 
             response.lastName, 
             response.salary, 
-            response.address);
+            response.address,
+            response.vehicleId);
             
           this.setGpsCoordinates();
           this.loading = false;

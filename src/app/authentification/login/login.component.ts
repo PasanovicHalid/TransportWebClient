@@ -21,6 +21,12 @@ export class LoginComponent {
     this.authService.login(this.loginRequest).subscribe({
       next: (response) => {
         this.authService.AddTokenWithDecodedPayloadToLocalStorage(response.token);
+
+        if(this.authService.isDriver() || this.authService.isSuperAdmin()) {
+          this.toastr.error("Not implemented yet!");
+          return;
+        }
+
         this.router.navigate(['/dashboard']);
 
       },

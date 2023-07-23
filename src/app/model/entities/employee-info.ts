@@ -11,6 +11,7 @@ export class EmployeeInfo {
     lastName: string = '';
     salary: number = 0;
     address: Address = new Address();
+    vehicleId: number = 0;
 
     initializeEmployeeInfo(id: number,
         role: string,
@@ -21,7 +22,8 @@ export class EmployeeInfo {
         middleName: string | null,
         lastName: string,
         salary: number,
-        address: Address) {
+        address: Address,
+        vehicleId: number) {
         this.id = id;
         this.role = role;
         this.email = email;
@@ -32,6 +34,7 @@ export class EmployeeInfo {
         this.lastName = lastName;
         this.salary = salary;
         this.address = address;
+        this.vehicleId = vehicleId;
     }
 
     getFullName(): string {

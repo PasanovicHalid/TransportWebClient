@@ -1,11 +1,5 @@
 .container {
-    width: 100%;
-    display: flex;
-    justify-content: start;
-    padding: 50px;
-
     .employee-info-container {
-        width: 55%;
         background-color: var(--secondary-bg-color);
         border-radius: 20px;
         box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);

@@ -21,4 +21,20 @@ export class DriverService {
         headers: this.headers
       });
   }
+
+  public assignVehicle(id: number, vehicleId : number) : Observable<unknown> {
+    return this.http.post(
+      this.basePath + `${id}/assign-vehicle/${vehicleId}`,
+      {
+        headers: this.headers
+      });
+  }
+
+  public unassignVehicle(id: number) : Observable<unknown> {
+    return this.http.post(
+      this.basePath + `${id}/unassign-vehicle`,
+      {
+        headers: this.headers
+      });
+  }
 }

@@ -19,9 +19,9 @@
             <td mat-cell *matCellDef="let element" (click)="openTrailerInfo(element.id)"> {{element.capacity.volume.depth}}D - {{element.capacity.volume.height}}H - {{element.capacity.volume.width}}W </td>
         </ng-container>
 
-        <ng-container matColumnDef="belongsToTruck">
-            <th mat-header-cell *matHeaderCellDef> Belongs to truck </th>
-            <td mat-cell *matCellDef="let element" (click)="openTrailerInfo(element.id)"> {{element.vehicleId | empty}}</td>
+        <ng-container matColumnDef="belongsToVehicle">
+            <th mat-header-cell *matHeaderCellDef> Belongs to vehicle </th>
+            <td mat-cell *matCellDef="let element" (click)="openTrailerInfo(element.id)"> {{getVehicleName(element.vehicle) | empty}}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

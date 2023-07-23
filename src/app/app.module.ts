@@ -18,6 +18,7 @@ import { RouteManagementModule } from './route-management/route-management.modul
 import { ToastrModule } from 'ngx-toastr';
 import { CommonCodeModule } from './common-code/common-code.module';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     EmployeeManagementModule,
     VehicleManagementModule,
     RouteManagementModule,
+    CanvasJSAngularChartsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

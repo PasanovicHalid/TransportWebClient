@@ -2,12 +2,38 @@
     <mat-spinner diameter="250"></mat-spinner>
 </div>
 <ng-template #content>
-    <app-employee-info 
-    [employeeInfo]="employeeInfo"
-    [title]="title"
-    [ErrorMap]="ErrorMap"
-    (fireEmployeeEvent)="handleFireDriver()"
-    (updateEmployeeInfoEvent)="handleUpdateDriver($event)">
+    <div class="container">
+        <app-employee-info  [employeeInfo]="employeeInfo" 
+                            [title]="title" 
+                            [ErrorMap]="ErrorMap"
+                            (fireEmployeeEvent)="handleFireDriver()" 
+                            (updateEmployeeInfoEvent)="handleUpdateDriver($event)">
+        </app-employee-info>
 
-    </app-employee-info>
+        <div class="resolution-container">
+            <div class="title">
+                Assignment
+            </div>
+            <div class="inputs">
+                <div class="header header-border-top header-border-bottom header-background">
+                    <h2>Vehicle</h2>
+                </div>
+                <div class="flex-space-between gap-20">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Vehicles</mat-label>
+                        <mat-select [(ngModel)]="this.assignVehicleRequest.vehicleId">
+                            <mat-option *ngFor="let vehicle of vehicleOptions" [value]="vehicle.id">
+                                {{vehicle.manufacturer}} {{vehicle.model}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="header-border-top button-container">
+                    <button class="full-width add" mat-raised-button color="primary" (click)="assignVehicle()">Assign</button>
+                    <button class="full-width fire" mat-raised-button color="primary" (click)="unassignVehicle()">Unassign</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </ng-template>

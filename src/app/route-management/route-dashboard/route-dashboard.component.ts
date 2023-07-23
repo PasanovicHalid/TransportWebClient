@@ -53,7 +53,7 @@ export class RouteDashboardComponent implements OnInit {
     if(!!money == false) {
       return '';
     }
-    return `${money!.currency} ${money!.amount}`;
+    return `${money!.currency} ${money!.amount.toFixed(2)}`;
   }
 
   public getFullNameOfDriver(employeeInfo : EmployeeInfo) : string {

@@ -43,6 +43,26 @@ export class AuthentificationService {
     }
 
     localStorage.setItem("jwt", token);
+    localStorage.setItem("role", decodedToken["role"]);
+  }
+
+  GetRoleFromLocalStorage() : string | null {
+    return localStorage.getItem("role");
+  }
+
+  isAdministrator() : boolean {
+    const role = this.GetRoleFromLocalStorage();
+    return role == "Admin";
+  }
+
+  isDriver() : boolean {
+    const role = this.GetRoleFromLocalStorage();
+    return role == "Driver";
+  }
+
+  isSuperAdmin() : boolean {
+    const role = this.GetRoleFromLocalStorage();
+    return role == "SuperAdmin";
   }
 
   RemoveTokenFromLocalStorage() {

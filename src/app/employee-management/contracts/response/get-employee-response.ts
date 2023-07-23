@@ -11,4 +11,5 @@ export interface GetEmployeeResponse {
     lastName : string;
     salary : number;
     address : Address;
+    vehicleId: number;
 }

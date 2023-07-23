@@ -1,7 +1,7 @@
 <div class="container">
     <div class="employee-container">
         <div class="title">
-            Add Trailer
+            Trailer Info
         </div>
         <div class="inputs">
             <div class="header header-border-top header-border-bottom header-background">
@@ -30,6 +30,30 @@
             <div class="header-border-top button-container">
                 <button class="full-width add" (click)="updateTrailer()" mat-raised-button color="primary">Update</button>
                 <button class="full-width fire" (click)="deleteTrailer()" mat-raised-button color="primary">Remove</button>
+            </div>
+        </div>
+    </div>
+    <div class="vehicle-container">
+        <div class="title">
+            Assignment
+        </div>
+        <div class="inputs">
+            <div class="header header-border-top header-border-bottom header-background">
+                <h2>Vehicle</h2>
+            </div>
+            <div class="flex-space-between gap-20">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Vehicles</mat-label>
+                    <mat-select [(ngModel)]="this.assignVehicleRequest.vehicleId">
+                        <mat-option *ngFor="let vehicle of vehicleOptions" [value]="vehicle.id">
+                            {{vehicle.manufacturer}} {{vehicle.model}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="header-border-top button-container">
+                <button class="full-width add" mat-raised-button color="primary" (click)="assignVehicle()">Assign</button>
+                <button class="full-width fire" mat-raised-button color="primary" (click)="unassignVehicle()">Unassign</button>
             </div>
         </div>
     </div>

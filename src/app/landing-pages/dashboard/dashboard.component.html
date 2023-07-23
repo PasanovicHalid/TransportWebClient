@@ -1,3 +1,60 @@
 <div class="content">
-    <p style="margin: 0;">dashboard works!</p>
+    <div class="title">
+        <h2>Dashboard</h2>
+    </div>
+    <div class="spacer"></div>
+    <div class="cards">
+        <div class="card vehicle-card-background">
+            <div class="info">
+                <div class="header-of-card">
+                    <mat-icon>local_shipping</mat-icon>
+                    <h2>Vehicles</h2>
+                </div>
+                <h2>Number: {{this.dashboardInfo.vehiclesCount}} </h2>
+            </div>
+        </div>
+        <div class="card inflow-card-background">
+            <div class="info">
+                <div class="header-of-card">
+                    <mat-icon>show_chart</mat-icon>
+                    <h2>Inflow</h2>
+                </div>
+                <h2>Number: {{this.dashboardInfo.inflow | number:'1.0-2'}}  EUR</h2>
+            </div>
+        </div>
+        <div class="card routes-card-background">
+            <div class="info">
+                <div class="header-of-card">
+                    <mat-icon>route</mat-icon>
+                    <h2>Routes in process</h2>
+                </div>
+                <h2>Number: {{this.dashboardInfo.transportationsInProgress}}</h2>
+            </div>
+        </div>
+        <div class="card outflow-card-background">
+            <div class="info">
+                <div class="header-of-card">
+                    <mat-icon class="rotate">show_chart</mat-icon>
+                    <h2>Outflow</h2>
+                </div>
+                <h2>Number: {{this.dashboardInfo.outflow | number:'1.0-2'}} EUR</h2>
+            </div>
+        </div>
+        <div class="card employee-card-background">
+            <div class="info">
+                <div class="header-of-card">
+                    <mat-icon>badge</mat-icon>
+                    <h2>Employee expendature</h2>
+                </div>
+                <h2>Number: {{this.dashboardInfo.employeeExpenses | number:'1.0-2'}} EUR</h2>
+            </div>
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="charts">
+        <canvasjs-chart [options]="routeCashflowOptions"
+            [styles]="{width: '100%', height:'360px', display:'inline-block'}"></canvasjs-chart>
+            <div class="spacer"></div>
+        <canvasjs-chart [options]="routeCountOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
+    </div>
 </div>

@@ -8,6 +8,8 @@ import { AddTrailerRequest } from '../vehicle-management/contracts/requests/add-
 import { TrailerPageRequest } from '../vehicle-management/contracts/requests/trailer-page-request';
 import { UpdateTrailerRequest } from '../vehicle-management/contracts/requests/update-trailer-request';
 import { EmployeeInfo } from '../model/entities/employee-info';
+import { VehicleInfo } from '../model/entities/vehicle-info';
+import { DashboardInfo } from '../model/dashboard-info';
 
 @Injectable({
   providedIn: 'root'
@@ -82,11 +84,52 @@ export class CompanyService {
       });
   }
 
+  getTrailersForVehicle(request: TrailerPageRequest, vehicleId : number): Observable<PaginationResponse> {
+    return this.http.post<PaginationResponse>(
+      this.basePath + `trailer/page-assigned-to-vehicle/${vehicleId}`,
+      request,
+      { 
+        headers: this.headers 
+      });
+  }
+
   getDriversByCompany(): Observable<EmployeeInfo[]> {
     return this.http.get<EmployeeInfo[]>(
       this.basePath + "drivers-by-company",
       { 
         headers: this.headers 
+      });
+  }
+
+  getFreeVehiclesByCompany(): Observable<VehicleInfo[]> {
+    return this.http.get<VehicleInfo[]>(
+      this.basePath + "free-vehicles-by-company",
+      { 
+        headers: this.headers 
+      });
+  }
+
+  getDriversWithoutVehicles(): Observable<EmployeeInfo[]> {
+    return this.http.get<EmployeeInfo[]>(
+      this.basePath + "drivers-without-vehicles",
+      { 
+        headers: this.headers 
+      });
+  }
+
+  getVehiclesOfCompany(): Observable<VehicleInfo[]> {
+    return this.http.get<VehicleInfo[]>(
+      this.basePath + "vehicles-of-company",
+      { 
+        headers: this.headers 
+      });
+  }
+
+  getDashboardInfo() : Observable<DashboardInfo> {
+    return this.http.get<DashboardInfo>(
+      this.basePath + "dashboard",
+      {
+        headers: this.headers
       });
   }
 }
