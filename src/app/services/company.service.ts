@@ -10,6 +10,7 @@ import { UpdateTrailerRequest } from '../vehicle-management/contracts/requests/u
 import { EmployeeInfo } from '../model/entities/employee-info';
 import { VehicleInfo } from '../model/entities/vehicle-info';
 import { DashboardInfo } from '../model/dashboard-info';
+import { DashboardRequest } from '../landing-pages/requests/dashboard-request';
 
 @Injectable({
   providedIn: 'root'
@@ -125,9 +126,10 @@ export class CompanyService {
       });
   }
 
-  getDashboardInfo() : Observable<DashboardInfo> {
-    return this.http.get<DashboardInfo>(
+  getDashboardInfo(dashboardRequest: DashboardRequest) : Observable<DashboardInfo> {
+    return this.http.post<DashboardInfo>(
       this.basePath + "dashboard",
+      dashboardRequest,
       {
         headers: this.headers
       });
