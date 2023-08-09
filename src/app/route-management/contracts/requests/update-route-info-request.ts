@@ -10,6 +10,7 @@ export class UpdateRouteInfoRequest {
     cargo : Cargo = new Cargo();
     received : Money = new Money();
     destination : Address = new Address();
+    origin : Address = new Address();
 
     fromTransportationInfo(transportationInfo: TransportationInfo) : UpdateRouteInfoRequest {
         this.id = transportationInfo.id;
@@ -18,6 +19,7 @@ export class UpdateRouteInfoRequest {
         this.cargo = transportationInfo.transporting;
         this.received = transportationInfo.received;
         this.destination = transportationInfo.destination;
+        this.origin = transportationInfo.origin;
 
         return this;
     }

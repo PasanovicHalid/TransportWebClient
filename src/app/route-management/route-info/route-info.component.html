@@ -65,6 +65,45 @@
                 </mat-form-field>
             </div>
             <div class="header header-border-top header-border-bottom header-background">
+                <h2>Origin</h2>
+            </div>
+            <div class="flex-space-between gap-20">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Street</mat-label>
+                    <input [(ngModel)]="this.data.origin.street" matInput placeholder="Street">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>City</mat-label>
+                    <input [(ngModel)]="this.data.origin.city" matInput placeholder="City">
+                </mat-form-field>
+            </div>
+            <div class="flex-space-between gap-20">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>State</mat-label>
+                    <input [(ngModel)]="this.data.origin.state" matInput placeholder="State">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Postal Code</mat-label>
+                    <input [(ngModel)]="this.data.origin.postalCode" matInput placeholder="Postal Code">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Country</mat-label>
+                    <input [(ngModel)]="this.data.origin.country" matInput placeholder="Country">
+                </mat-form-field>
+            </div>
+            <div class="flex-space-between gap-20">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Longitude</mat-label>
+                    <input [(ngModel)]="this.data.origin.gpsCoordinate.longitude" type="number" matInput
+                        placeholder="Longitude">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Latitude</mat-label>
+                    <input [(ngModel)]="this.data.origin.gpsCoordinate.latitude" type="number" matInput
+                        placeholder="Latitude">
+                </mat-form-field>
+            </div>
+            <div class="header header-border-top header-border-bottom header-background">
                 <h2>Destination</h2>
             </div>
             <div class="flex-space-between gap-20">

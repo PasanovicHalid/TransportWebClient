@@ -11,6 +11,7 @@ export class TransportationInfo {
     requiredFor : Date = new Date();
     transporting : Cargo = new Cargo();
     destination : Address = new Address();
+    origin : Address = new Address();
     cost : Money | null = new Money();
     received : Money = new Money();
     startLocation : GpsCoordinate | null = new GpsCoordinate();

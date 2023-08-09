@@ -13,7 +13,7 @@ import { TransportationDashboardResponse } from '../contracts/response/transport
   styleUrls: ['./route-dashboard.component.scss']
 })
 export class RouteDashboardComponent implements OnInit {
-  displayedColumns: string[] = ['start', 'requiredFor', 'transporting', 'destination', 'received', 'cost','drivenBy'];
+  displayedColumns: string[] = ['start', 'requiredFor', 'transporting', 'origin', 'destination', 'received', 'cost','drivenBy'];
   public dataSource : RouteDataSource = new RouteDataSource(this.transportationService, this.toastr);
   public pageRequest : TransportationPageRequest = new TransportationPageRequest();
   public dashboardData : TransportationDashboardResponse = new TransportationDashboardResponse();

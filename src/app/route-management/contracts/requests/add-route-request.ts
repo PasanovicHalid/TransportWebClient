@@ -8,4 +8,5 @@ export class AddRouteRequest {
     cargo : Cargo = new Cargo();
     received : Money = new Money();
     destination : Address = new Address();
+    origin : Address = new Address();
 }

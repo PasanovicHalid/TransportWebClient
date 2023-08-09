@@ -51,6 +51,11 @@
                 <th mat-header-cell *matHeaderCellDef> Transporting </th>
                 <td mat-cell *matCellDef="let element" (click)="showRouteDetails(element.id)"> {{element.transporting.description}} (Weight: {{element.transporting.weight}} KG) </td>
             </ng-container>
+            
+            <ng-container matColumnDef="origin">
+                <th mat-header-cell *matHeaderCellDef> Origin </th>
+                <td mat-cell *matCellDef="let element" (click)="showRouteDetails(element.id)"> {{element.origin.street}}, {{element.origin.city}}, {{element.origin.state}}, {{element.origin.postalCode}}, {{element.origin.country}} </td>
+            </ng-container>
 
             <ng-container matColumnDef="destination">
                 <th mat-header-cell *matHeaderCellDef> Destination </th>
