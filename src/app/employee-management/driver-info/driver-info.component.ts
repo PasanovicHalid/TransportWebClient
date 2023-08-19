@@ -10,6 +10,8 @@ import { VehicleInfo } from 'src/app/model/entities/vehicle-info';
 import { DriverService } from 'src/app/services/driver.service';
 import { CompanyService } from 'src/app/services/company.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
+import { ChartOptions, LineOption } from 'src/app/landing-pages/dashboard/dashboard.component';
+import { DriverPerformanceData } from 'src/app/model/driver-performance-data';
 
 @Component({
   selector: 'app-driver-info',
@@ -26,6 +28,16 @@ export class DriverInfoComponent implements OnInit {
   vehicleOptions: VehicleInfo[] = [];
 
   ErrorMap: Map<string, string> = new Map<string, string>();
+
+  routeCountOptions : ChartOptions = new ChartOptions("Route Count", []);
+
+  routeCountChart : any;
+
+  driverPerformanceData: DriverPerformanceData = new DriverPerformanceData();
+
+  startDate : Date = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+
+  endDate: Date = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0);
 
   title: string = 'Driver Info';
 
@@ -45,6 +57,7 @@ export class DriverInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initialSetup();
     this.employeeService.getEmployeeById(this.userId).subscribe(
       {
         next: (response) => {
@@ -94,6 +107,36 @@ export class DriverInfoComponent implements OnInit {
       });
   }
 
+  filter() : void {
+    this.driverService.getDriverPerformanceData(this.userId, this.startDate, this.endDate).subscribe({
+      next: (response) => {
+        let transportationCountChartData = new LineOption("#4F81BC", "#5A5757", response.numberOfTransportations);
+        this.routeCountOptions.data[0].dataPoints = transportationCountChartData.dataPoints;
+        this.updateCharts();
+      },
+      error: (error) => {
+        this.toastr.error(error.error.title);
+      }
+    });
+  }
+
+  initialSetup(): void {
+    this.driverService.getDriverPerformanceData(this.userId, this.startDate, this.endDate).subscribe({
+      next: (response) => {
+        let transportationCountChartData = new LineOption("#4F81BC", "#5A5757", response.numberOfTransportations);
+        this.routeCountOptions = new ChartOptions("Route Count", [transportationCountChartData]);
+        this.updateCharts();
+      },
+      error: (error) => {
+        this.toastr.error(error.error.title);
+      }
+    });
+  }
+
+  updateCharts(): void {
+    this.routeCountChart.render();
+  }
+
   handleFireDriver() {
     this.router.navigate(['/employee-dashboard']);
   }
@@ -131,6 +174,10 @@ export class DriverInfoComponent implements OnInit {
         this.toastr.error(error.error.title);
       }
     });
+  }
+
+  getRouteCountChart(chart: any) {
+    this.routeCountChart = chart;
   }
 
   private setGpsCoordinates() {

@@ -34,6 +34,25 @@
                 </div>
             </div>
         </div>
+        <div class="charts">
+            <div class="filters">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Start Date</mat-label>
+                    <input matInput [(ngModel)]="startDate" [matDatepicker]="startPicker" placeholder="Start Date">
+                    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startPicker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>End Date</mat-label>
+                    <input matInput [(ngModel)]="endDate" [matDatepicker]="endPicker" placeholder="End Date">
+                    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #endPicker></mat-datepicker>
+                </mat-form-field>
+                <button class="filter-button filter-button-color" (click)="filter()" mat-raised-button color="primary">Filter</button>
+            </div>
+            <canvasjs-chart [options]="routeCountOptions" [styles]="{width: '100%', height:'360px'}" (chartInstance)="getRouteCountChart($event)"></canvasjs-chart>
+        </div>
     </div>
+    
 
 </ng-template>

@@ -13,6 +13,7 @@ import { CommonCodeModule } from '../common-code/common-code.module';
 import { EmptyPipe } from '../common-code/pipes/empty-pipe';
 import { AdminInfoComponent } from './admin-info/admin-info.component';
 import { DriverInfoComponent } from './driver-info/driver-info.component';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 
 
@@ -31,7 +32,8 @@ import { DriverInfoComponent } from './driver-info/driver-info.component';
     CommonModule,
     AngularMaterialModule,
     RouterModule,
-    CommonCodeModule
+    CommonCodeModule,
+    CanvasJSAngularChartsModule,
   ]
 })
 export class EmployeeManagementModule { }
