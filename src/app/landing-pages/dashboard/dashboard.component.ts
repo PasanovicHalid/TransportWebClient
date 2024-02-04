@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { DashboardInfo } from 'src/app/model/dashboard-info';
-import { CompanyService } from 'src/app/services/company.service';
-import { DashboardRequest } from '../requests/dashboard-request';
+import { LawSearchEngineService } from 'src/app/services/law-search-engine.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,52 +8,41 @@ import { DashboardRequest } from '../requests/dashboard-request';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  public searchOptions: string[] = [];
+  public searchOpetator = SearchOperator;
 
-  routeCashflowOptions : ChartOptions = new ChartOptions("Route Gains/Costs", []);
+  public field: string = "";
+  public value: string = "";
+  public operator: SearchOperator = SearchOperator.AND;
+  public address: string | undefined;
+  public radius: number | undefined;
 
-  routeCashChart : any;
+  public searchResults: any[] = [];
 
-  routeCountOptions : ChartOptions = new ChartOptions("Route Count", []);
 
-  routeCountChart : any;
-
-  dashboardInfo: DashboardInfo = new DashboardInfo();
-
-  dashboardRequest: DashboardRequest = new DashboardRequest();
-
-  constructor(private companyService: CompanyService,
-    private toastr: ToastrService) { 
-      this.dashboardRequest.startDate = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
-      this.dashboardRequest.endDate = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0);
-    }
-  
-  getRouteCashChart(chart: any) {
-    this.routeCashChart = chart;
+  constructor(private toastr: ToastrService, private lawSearchEngineService: LawSearchEngineService) {
   }
 
-  getRouteCountChart(chart: any) {
-    this.routeCountChart = chart;
-  }
-
-  updateCharts(): void {
-    this.routeCashChart.render();
-    this.routeCountChart.render();
-  }
 
   ngOnInit(): void {
-    this.initialSetup();
+
   }
 
-  initialSetup(): void {
-    this.companyService.getDashboardInfo(this.dashboardRequest).subscribe({
+  public addToken() {
+    if (this.searchOptions.length == 0) {
+      this.searchOptions.push(`${this.field}:'${this.value}'`);
+    } else {
+      this.searchOptions.push(`${this.operator}`);
+      this.searchOptions.push(`${this.field}:'${this.value}'`);
+    }
+  }
+
+  public downloadDocument(contract: any) {
+    this.lawSearchEngineService.downloadDocument(contract).subscribe({
       next: (response) => {
-        this.dashboardInfo = response;
-        let transportationGainChartData = new LineOption("#9DC08B", "#5A5757", this.dashboardInfo.transportationGainsPerDay);
-        let transportationCostChartData = new LineOption("#C24642", "#5A5757", this.dashboardInfo.transportationCostsPerDay);
-        let transportationCountChartData = new LineOption("#4F81BC", "#5A5757", this.dashboardInfo.transportationCountPerDay);
-        this.routeCashflowOptions = new ChartOptions("Route Gains/Costs", [transportationGainChartData, transportationCostChartData]);
-        this.routeCountOptions = new ChartOptions("Route Count", [transportationCountChartData]);
-        this.updateCharts();
+        const blob = new Blob([response], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
       },
       error: (error) => {
         this.toastr.error(error.error.title);
@@ -63,23 +50,29 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  filter() : void {
-    this.companyService.getDashboardInfo(this.dashboardRequest).subscribe({
+  public search() {
+
+    this.lawSearchEngineService.searchContract({search: this.searchOptions, address: this.address, radius: this.radius }).subscribe({
       next: (response) => {
-        this.dashboardInfo = response;
-        let transportationGainChartData = new LineOption("#9DC08B", "#5A5757", this.dashboardInfo.transportationGainsPerDay);
-        let transportationCostChartData = new LineOption("#C24642", "#5A5757", this.dashboardInfo.transportationCostsPerDay);
-        let transportationCountChartData = new LineOption("#4F81BC", "#5A5757", this.dashboardInfo.transportationCountPerDay);
-        this.routeCashflowOptions.data[0].dataPoints = transportationGainChartData.dataPoints;
-        this.routeCashflowOptions.data[1].dataPoints = transportationCostChartData.dataPoints;
-        this.routeCountOptions.data[0].dataPoints = transportationCountChartData.dataPoints;
-        this.updateCharts();
+        this.searchResults = response;
       },
       error: (error) => {
         this.toastr.error(error.error.title);
       }
     });
   }
+
+}
+
+export class SearchOption {
+  field: string = "";
+  value: string = "";
+}
+
+export enum SearchOperator {
+  AND = "AND",
+  OR = "OR",
+  NOT = "NOT"
 }
 
 export class LineOption {
@@ -100,12 +93,12 @@ export class ChartOptions {
     text: string
   };
   animationEnabled: boolean = true;
-  axisY: 
-  {
-    includeZero: boolean
-  } = {
-        includeZero: true
-      };
+  axisY:
+    {
+      includeZero: boolean
+    } = {
+      includeZero: true
+    };
   backgroundColor: string = "#F3DEBA";
   data: any[] = [];
 

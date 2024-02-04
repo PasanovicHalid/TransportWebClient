@@ -1,5 +1,5 @@
 {
-  "name": "transport-web-client",
+  "name": "law-search-engine-web-client",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

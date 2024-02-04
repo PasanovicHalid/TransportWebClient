@@ -1,75 +1,76 @@
 <div class="content">
     <div class="title">
-        <h2>Dashboard</h2>
+        <h2>Search Contracts</h2>
     </div>
+
+    <div class="search-enclosure-2">
+        <mat-form-field class="search">
+            <mat-label>Address</mat-label>
+            <input [(ngModel)]="address" matInput>
+        </mat-form-field>
+        <mat-form-field class="search">
+            <mat-label>Radius</mat-label>
+            <input [(ngModel)]="radius" matInput>
+        </mat-form-field>
+    </div>
+
+    <div class="search-enclosure">
+        <mat-form-field>
+            <mat-label>Field</mat-label>
+            <mat-select [(ngModel)]="field">
+                <mat-option>None</mat-option>
+                <mat-option value="contract">Contract</mat-option>
+                <mat-option value="signerName">Signer name</mat-option>
+                <mat-option value="signerSurname">Signer Surname</mat-option>
+                <mat-option value="governmentName">Government name</mat-option>
+                <mat-option value="levelOfGovernemnt">Level of Government</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="search">
+            <mat-label>Value</mat-label>
+            <input [(ngModel)]="value" matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Operator</mat-label>
+            <mat-select [(ngModel)]="operator">
+                <mat-option>None</mat-option>
+                <mat-option [value]="searchOpetator.AND">AND</mat-option>
+                <mat-option [value]="searchOpetator.OR">OR</mat-option>
+                <mat-option [value]="searchOpetator.NOT">NOT</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button class="button" mat-raised-button (click)="addToken()">
+            <span class="material-icons icon-color">add</span>
+            Add token
+        </button>
+        <button class="button" mat-raised-button (click)="search()">
+            <span class="material-icons icon-color">search</span>
+            Search
+        </button>
+    </div>
+
+    <div class="token-container" >
+        <ng-container *ngFor="let token of searchOptions">
+            <div class="token">
+                {{token}}
+            </div>
+        </ng-container>
+    </div>
+
+    <div class="search-result-container">
+        <ng-container *ngFor="let contract of searchResults">
+            <div class="search-result">
+                <a class="search-result-title" (click)="downloadDocument(contract.filePath)">
+                    <h3>{{contract.filePath}}</h3>
+                </a>
+                <div class="search-result-content">
+                    <ng-container *ngFor="let highlight of contract.highlights.contract">
+                        <div [innerHTML]="highlight"></div>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
     <div class="spacer"></div>
-    <div class="cards">
-        <div class="card vehicle-card-background">
-            <div class="info">
-                <div class="header-of-card">
-                    <mat-icon>local_shipping</mat-icon>
-                    <h2>Vehicles</h2>
-                </div>
-                <h2>Number: {{this.dashboardInfo.vehiclesCount}} </h2>
-            </div>
-        </div>
-        <div class="card inflow-card-background">
-            <div class="info">
-                <div class="header-of-card">
-                    <mat-icon>show_chart</mat-icon>
-                    <h2>Inflow</h2>
-                </div>
-                <h2>Number: {{this.dashboardInfo.inflow | number:'1.0-2'}}  EUR</h2>
-            </div>
-        </div>
-        <div class="card routes-card-background">
-            <div class="info">
-                <div class="header-of-card">
-                    <mat-icon>route</mat-icon>
-                    <h2>Routes in process</h2>
-                </div>
-                <h2>Number: {{this.dashboardInfo.transportationsInProgress}}</h2>
-            </div>
-        </div>
-        <div class="card outflow-card-background">
-            <div class="info">
-                <div class="header-of-card">
-                    <mat-icon class="rotate">show_chart</mat-icon>
-                    <h2>Outflow</h2>
-                </div>
-                <h2>Number: {{this.dashboardInfo.outflow | number:'1.0-2'}} EUR</h2>
-            </div>
-        </div>
-        <div class="card employee-card-background">
-            <div class="info">
-                <div class="header-of-card">
-                    <mat-icon>badge</mat-icon>
-                    <h2>Employee expendature</h2>
-                </div>
-                <h2>Number: {{this.dashboardInfo.employeeExpenses | number:'1.0-2'}} EUR</h2>
-            </div>
-        </div>
-    </div>
-    <div class="spacer"></div>
-    <div class="charts">
-        <div class="filters">
-            <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Start Date</mat-label>
-                <input matInput [(ngModel)]="dashboardRequest.startDate" [matDatepicker]="startPicker" placeholder="Start Date">
-                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
-                <mat-datepicker #startPicker></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field class="full-width" appearance="outline">
-                <mat-label>End Date</mat-label>
-                <input matInput [(ngModel)]="dashboardRequest.endDate" [matDatepicker]="endPicker" placeholder="End Date">
-                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-                <mat-datepicker #endPicker></mat-datepicker>
-            </mat-form-field>
-            <button class="filter-button filter-button-color" (click)="filter()" mat-raised-button color="primary">Filter</button>
-        </div>
-        <canvasjs-chart [options]="routeCashflowOptions"
-            [styles]="{width: '100%', height:'360px', display:'inline-block'}" (chartInstance)="getRouteCashChart($event)"></canvasjs-chart>
-            <div class="spacer"></div>
-        <canvasjs-chart [options]="routeCountOptions" [styles]="{width: '100%', height:'360px'}" (chartInstance)="getRouteCountChart($event)"></canvasjs-chart>
-    </div>
 </div>

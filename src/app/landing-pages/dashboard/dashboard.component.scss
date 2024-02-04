@@ -3,8 +3,7 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 2%;
+    gap: 10%;
 }
 
 .title {
@@ -23,126 +22,73 @@
     margin-bottom: 20px;
 }
 
-.cards {
+.search-enclosure {
+    margin-top: 10px;
     display: flex;
-    justify-content: space-between;
-    border-radius: 20px;
-    padding: 20px;
-    background-color: var(--secondary-bg-color);
-    box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
-}
-
-.charts {
-    border-radius: 20px;
-    background-color: var(--secondary-bg-color);
-    box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
-    overflow: hidden;
-}
-
-.filters{
-    display: flex;
-    margin-bottom: 20px;
+    justify-content: stretch;
     gap: 20px;
-    margin-top: 20px;
-    margin-right: 20px;
+
+    .search{
+        flex-grow: 1;
+    }
+}
+
+.search-enclosure-2 {
+    margin-top: 50px;
+    display: flex;
+    justify-content: stretch;
+    gap: 20px;
+
+    .search{
+        flex-grow: 1;
+    }
+}
+
+.token-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: center;
-}
+    margin-top: 20px;
 
-.filter-button{
-    padding: 27px;
-}
-
-.filter-button-color{
-    background-color: var(--accent-color);
-    color: var(--primary-color);
-}
-
-
-.rotate {
-    transform: rotate(80deg) scale(3) !important;
-}
-
-.vehicle-card-background {
-    background-color: #FFD95A;
-}
-
-.inflow-card-background {
-    background-color: #9DC08B;
-}
-
-.routes-card-background {
-    background-color: #FFF7D4;
-}
-
-.employee-card-background {
-    background-color: #FFD95A;
-}
-
-.outflow-card-background {
-    background-color: #c0938b;
-}
-
-.card {
-    width: 18%;
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
-
-    .info {
+    .token {
         padding: 10px;
-    }
-
-    .header-of-card {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        mat-icon {
-            margin-left: 20px;
-            margin-right: 20px;
-            transform: scale(3);
-            overflow: visible !important;
-        }
-    }
-
-    .card-buttons {
-        button {
-            width: 100%;
-            border-radius: 0;
-            background-color: #9DC08B;
-        }
-    }
-
-    .select-table-button {
-        button {
-            width: 100%;
-            border-radius: 0;
-            background-color: var(--primary-color);
-            color: var(--secondary-bg-color);
-        }
-
-    }
-
-    .active-button {
-        background-color: var(--accent-color) !important;
-        color: var(--primary-color) !important;
+        border-radius: 20px;
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        font-weight: 600;
+        box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
+        cursor: pointer;
     }
 }
 
-::ng-deep {
-    .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+.search-result-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+
+    .search-result {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 20px;
+        background-color: var(--accent-color);
         color: var(--primary-color);
-    }
-
-    .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
-    .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
-    .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
-        border-color: var(--primary-color);
-    }
-
-    .mat-datepicker-content {
-        background-color: var(--accent-color) !important;
-        border-radius: 20px !important;
+        font-weight: 600;
         box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
+        cursor: pointer;
+
+        .search-result-content{
+            font-size: 1.2rem;
+        }
+
+        .search-result-title{
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
     }
+
+
 }

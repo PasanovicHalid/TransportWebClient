@@ -1,103 +1,83 @@
-.content {
-    height: 100%;
-    margin: 20px;
+.content{
+    min-height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+}
 
-    .basic-info-stickers {
+.title {
+    text-align: center;
+    font-size: 2.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    background-color: var(--accent-color);
+    border-radius: 20px;
+    box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
+}
+
+.spacer {
+    flex-grow: 1;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.search-enclosure {
+    margin-top: 50px;
+    display: flex;
+    justify-content: stretch;
+    gap: 20px;
+
+    .search{
+        flex-grow: 1;
+    }
+}
+
+.token-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+
+    .token {
+        padding: 10px;
+        border-radius: 20px;
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        font-weight: 600;
+        box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
+        cursor: pointer;
+    }
+}
+
+.search-result-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+
+    .search-result {
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        gap: 5vw;
-        margin-bottom: 3vh;
-        padding-top: 20px;
-        padding-bottom: 20px;
+        flex-direction: column;
+        padding: 20px;
         border-radius: 20px;
-        background-color: var(--secondary-bg-color);
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        font-weight: 600;
         box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
+        cursor: pointer;
 
-        .card {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 20%;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
-            
-            .info {
-                padding: 10px;
-            }
-
-            .employee-type {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                mat-icon {
-                    margin-left: 20px;
-                    transform: scale(3);
-                }
-            }
-
-            .card-buttons {
-                button {
-                    width: 100%;
-                    border-radius: 0;
-                    background-color: #9DC08B;
-                }
-            }
+        .search-result-content{
+            font-size: 1.2rem;
         }
 
-        .employee-number {
-            background-color: #C07F00;
-        }
-        
-        .driver-number {
-            background-color: #FFD95A;
-            
-        }
-        
-        .admin-number {
-            background-color: #FFF7D4;
+        .search-result-title{
+            font-size: 1.5rem;
+            font-weight: 700;
         }
     }
 
-    .displayed-employees {
-        border-radius: 20px;
-        background-color: var(--secondary-bg-color);
-        box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
 
-        .mat-mdc-table{
-            height: inherit !important;    
-            border-radius: inherit;
-            overflow:hidden !important;
-            background: inherit;
-        }
-
-        tr.mat-mdc-row:hover {
-            cursor: pointer !important;
-            background-color: var(--accent-color) !important;
-            transition: 0.5s;
-        }
-        
-        .mat-mdc-paginator {
-            border-top: 1px rgba(0, 0, 0, 0.12) solid;
-            background-color: inherit;
-            border-bottom-left-radius: inherit;
-            border-bottom-right-radius: inherit;
-        }
-    }
-}
-
-.spinner-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 100%;
-    width: 100%;
-}
-
-::ng-deep {
-    .mat-mdc-progress-spinner {
-        --mdc-circular-progress-active-indicator-color: var(--accent-color) !important;
-    }
 }
