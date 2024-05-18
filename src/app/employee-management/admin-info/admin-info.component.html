@@ -1,0 +1,15 @@
+<div *ngIf="loading; else content" class="spinner-container">
+    <mat-spinner diameter="250"></mat-spinner>
+</div>
+<ng-template #content>
+    <div class="container">
+        <app-employee-info 
+        [employeeInfo]="employeeInfo"
+        [title]="title"
+        [ErrorMap]="ErrorMap"
+        (updateEmployeeInfoEvent)="handleUpdateDriver($event)">
+
+        </app-employee-info>
+    </div>
+    
+</ng-template>

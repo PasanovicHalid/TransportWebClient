@@ -1,3 +1,52 @@
 <div class="content">
-    
+    <div class="basic-info-stickers">
+        <div class="card driver-number">
+            <div class="select-table-button">
+                <button mat-raised-button routerLink="/vehicle-dashboard/trucks" routerLinkActive="active-button">Show</button>
+            </div>
+            <div class="info">
+                <div class="employee-type">
+                    <mat-icon>local_shipping</mat-icon>
+                    <h1>Trucks</h1>
+                </div>
+                <h2>Number: {{this.dashboardData.totalTrucks}}</h2>
+            </div>
+            <div class="card-buttons">
+                <button mat-raised-button routerLink="/vehicle-dashboard/add-new-truck">Add</button>
+            </div>
+        </div>
+        <div class="card employee-number">
+            <div class="select-table-button">
+                <button mat-raised-button routerLink="/vehicle-dashboard/vans" routerLinkActive="active-button">Show</button>
+            </div>
+            <div class="info">
+                <div class="employee-type">
+                    <mat-icon>badge</mat-icon>
+                    <h1>Vans</h1>
+                </div>
+                <h2>Number: {{this.dashboardData.totalVans}}</h2>
+            </div>
+            <div class="card-buttons">
+                <button mat-raised-button routerLink="/vehicle-dashboard/add-new-van">Add</button>
+            </div>
+        </div>
+        <div class="card admin-number">
+            <div class="select-table-button">
+                <button mat-raised-button routerLink="/vehicle-dashboard/trailers" routerLinkActive="active-button">Show</button>
+            </div>
+            <div class="info">
+                <div class="employee-type">
+                    <mat-icon>admin_panel_settings</mat-icon>
+                    <h1>Trailers</h1>
+                </div>
+                <h2>Number: {{this.dashboardData.totalTrailers}}</h2>
+            </div>
+            <div class="card-buttons">
+                <button mat-raised-button routerLink="/vehicle-dashboard/add-new-trailer">Add</button>
+            </div>
+        </div>
+    </div>
+    <div [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''">
+        <router-outlet #outlet="outlet"></router-outlet>
+    </div>
 </div>

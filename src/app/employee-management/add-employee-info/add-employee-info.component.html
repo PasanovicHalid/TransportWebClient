@@ -1,0 +1,218 @@
+<div class="container">
+    <div class="employee-container">
+        <div class="title">
+            {{Title}}
+        </div>
+        <div class="inputs">
+            <div class="header header-border-top header-border-bottom header-background">
+                <h2>Credentials</h2>
+            </div>
+            <div class="flex-space-between gap-20">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input inputmode="email" [(ngModel)]="employeeInfo.email" [formControl]="email" matInput
+                        placeholder="Email">
+                    <mat-error *ngIf="ErrorMap.get('email') || email.invalid">
+                        <ng-container>
+                            <ng-container *ngIf="ErrorMap.get('email'); else clientSideValidationEmail">
+                                {{ErrorMap.get('email')}}
+                            </ng-container>
+                            <ng-template #clientSideValidationEmail>
+                                Please enter a valid email address
+                            </ng-template>
+                        </ng-container>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input [(ngModel)]="employeeInfo.password" matInput [formControl]="password"
+                        [type]="hide ? 'password' : 'text'" placeholder="Password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="ErrorMap.get('password'); else clientSideValidationPassword">
+                        {{ErrorMap.get('password')}}
+                    </mat-error>
+                    <ng-template #clientSideValidationPassword>
+                        Please enter a valid password
+                    </ng-template>
+                </mat-form-field>
+            </div>
+            <div class="header header-border-top header-border-bottom header-background">
+                <h2>Personal Information</h2>
+            </div>
+
+            <div class="flex-space-between gap-20 margin-bottom">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input [(ngModel)]="employeeInfo.firstName" [formControl]="firstName" matInput
+                        placeholder="First Name">
+                    <mat-error *ngIf="ErrorMap.get('firstname') || firstName.invalid">
+                        <ng-container>
+                            <ng-container *ngIf="ErrorMap.get('firstname'); else clientSideValidationFirstName">
+                                {{ErrorMap.get('firstname')}}
+                            </ng-container>
+                            <ng-template #clientSideValidationFirstName>
+                                Please enter a valid first name
+                            </ng-template>
+                        </ng-container>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Middle Name (Optional)</mat-label>
+                    <input [(ngModel)]="employeeInfo.middleName" matInput placeholder="Middle Name">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input [(ngModel)]="employeeInfo.lastName" [formControl]="lastName" matInput
+                        placeholder="Last Name">
+                    <mat-error *ngIf="ErrorMap.get('lastname') || lastName.invalid">
+                        <ng-container>
+                            <ng-container *ngIf="ErrorMap.get('lastname'); else clientSideValidationLastName">
+                                {{ErrorMap.get('lastname')}}
+                            </ng-container>
+                            <ng-template #clientSideValidationLastName>
+                                Please enter a valid last name
+                            </ng-template>
+                        </ng-container>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="flex-space-between gap-20 margin-bottom">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Salary</mat-label>
+                    <input [(ngModel)]="employeeInfo.salary" [formControl]="salary"  matInput placeholder="Salary">
+                    <mat-error *ngIf="ErrorMap.get('salary') || salary.invalid">
+                        <ng-container>
+                            <ng-container *ngIf="ErrorMap.get('salary'); else clientSideValidationSalary">
+                                {{ErrorMap.get('salary')}}
+                            </ng-container>
+                            <ng-template #clientSideValidationSalary>
+                                Please enter a valid salary
+                            </ng-template>
+                        </ng-container>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="flex-space-between gap-20 margin-bottom">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Phone Number</mat-label>
+                    <input [(ngModel)]="employeeInfo.phoneNumber" [formControl]="phoneNumber" matInput
+                        placeholder="Phone Number">
+                    <mat-error *ngIf="ErrorMap.get('phonenumber') || phoneNumber.invalid">
+                        <ng-container>
+                            <ng-container *ngIf="ErrorMap.get('phonenumber'); else clientSideValidationPhoneNumber">
+                                {{ErrorMap.get('phonenumber')}}
+                            </ng-container>
+                            <ng-template #clientSideValidationPhoneNumber>
+                                Please enter a valid phone number
+                            </ng-template>
+                        </ng-container>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="header header-border-top header-border-bottom header-background">
+                <h2>Location of residence</h2>
+            </div>
+            <div class="flex-space-between gap-20 margin-bottom">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Street</mat-label>
+                    <input [(ngModel)]="employeeInfo.address.street" [formControl]="street" matInput
+                        placeholder="Street">
+                    <mat-error *ngIf="ErrorMap.get('address.street') || street.invalid">
+                        <ng-container *ngIf="ErrorMap.get('address.street'); else clientSideValidationStreet">
+                            {{ErrorMap.get('address.street')}}
+                        </ng-container>
+                        <ng-template #clientSideValidationStreet>
+                            Please enter a valid street
+                        </ng-template>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>City</mat-label>
+                    <input [(ngModel)]="employeeInfo.address.city" [formControl]="city" matInput placeholder="City">
+                    <mat-error *ngIf="ErrorMap.get('address.city') || city.invalid">
+                        <ng-container>
+                            <ng-container *ngIf="ErrorMap.get('address.city'); else clientSideValidationCity">
+                                {{ErrorMap.get('address.city')}}
+                            </ng-container>
+                            <ng-template #clientSideValidationCity>
+                                Please enter a valid city
+                            </ng-template>
+                        </ng-container>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="flex-space-between gap-20 margin-bottom">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>State</mat-label>
+                    <input [(ngModel)]="employeeInfo.address.state" [formControl]="state" matInput placeholder="State">
+                    <mat-error *ngIf="ErrorMap.get('address.state') || state.invalid">
+                        <ng-container>
+                            <ng-container *ngIf="ErrorMap.get('address.state'); else clientSideValidationState">
+                                {{ErrorMap.get('address.state')}}
+                            </ng-container>
+                            <ng-template #clientSideValidationState>
+                                Please enter a valid state
+                            </ng-template>
+                        </ng-container>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Postal Code</mat-label>
+                    <input [(ngModel)]="employeeInfo.address.postalCode" [formControl]="postalCode" matInput
+                        placeholder="Postal Code">
+                    <mat-error *ngIf="ErrorMap.get('address.postalCode') || postalCode.invalid">
+                        <ng-container>
+                            <ng-container *ngIf="ErrorMap.get('address.postalCode'); else clientSideValidationPostalCode">
+                                {{ErrorMap.get('address.postalCode')}}
+                            </ng-container>
+                            <ng-template #clientSideValidationPostalCode>
+                                Please enter a valid postal code
+                            </ng-template>
+                        </ng-container>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Country</mat-label>
+                    <input [(ngModel)]="employeeInfo.address.country" [formControl]="country" matInput
+                        placeholder="Country">
+                    <mat-error *ngIf="ErrorMap.get('address.country') || country.invalid">
+                        <ng-container>
+                            <ng-container *ngIf="ErrorMap.get('address.country'); else clientSideValidationCountry">
+                                {{ErrorMap.get('address.country')}}
+                            </ng-container>
+                            <ng-template #clientSideValidationCountry>
+                                Please enter a valid country
+                            </ng-template>
+                        </ng-container>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="header header-border-top header-border-bottom header-background">
+                <h2>GPS Location</h2>
+            </div>
+            <div class="flex-space-between gap-20 margin-bottom">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Longitude</mat-label>
+                    <input [(ngModel)]="employeeInfo.address.gpsCoordinate.longitude" matInput placeholder="Longitude">
+                    <mat-error *ngIf="ErrorMap.get('address.gpscoordinate.longitude') != null">
+                        {{ErrorMap.get('address.gpscoordinate.longitude')}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Latitude</mat-label>
+                    <input [(ngModel)]="employeeInfo.address.gpsCoordinate.latitude" matInput placeholder="Latitude">
+                    <mat-error *ngIf="ErrorMap.get('address.gpscoordinate.latitude') != null">
+                        {{ErrorMap.get('address.gpscoordinate.latitude')}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="header-border-top button-container">
+                <button class="full-width add" mat-raised-button color="primary"
+                    (click)="emitEmployeeInfo()">{{ButtonTitle}}</button>
+            </div>
+        </div>
+    </div>
+</div>

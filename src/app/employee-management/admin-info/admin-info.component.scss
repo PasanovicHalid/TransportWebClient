@@ -1,0 +1,20 @@
+.spinner-container {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    gap: 5%;
+}
+
+::ng-deep {
+    .mat-mdc-progress-spinner {
+        --mdc-circular-progress-active-indicator-color: var(--accent-color) !important;
+    }
+}

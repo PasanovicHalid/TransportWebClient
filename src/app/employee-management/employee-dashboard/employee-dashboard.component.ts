@@ -1,7 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { EmployeeDataSource } from '../data-source/employee-data-source';
 import { ToastrService } from 'ngx-toastr';
-import { SearchOperator } from 'src/app/landing-pages/dashboard/dashboard.component';
-import { LawSearchEngineService } from 'src/app/services/law-search-engine.service';
+import { Router } from '@angular/router';
+import { EmployeePageRequest } from '../model/employee-page-request';
+import { EmployeeInfo } from '../../model/entities/employee-info';
+import { EmployeeService } from 'src/app/services/employee.service';
+import { EmployeeDashboardResponse } from '../contracts/response/employee-dashboard-response';
 
 @Component({
   selector: 'app-employee-dashboard',
@@ -9,56 +13,47 @@ import { LawSearchEngineService } from 'src/app/services/law-search-engine.servi
   styleUrls: ['./employee-dashboard.component.scss']
 })
 export class EmployeeDashboardComponent implements OnInit {
-  public searchOptions: string[] = [];
-  public searchOpetator = SearchOperator;
-
-  public field: string = "";
-  public value: string = "";
-  public operator: SearchOperator = SearchOperator.AND;
-
-  public searchResults: any[] = [];
+  displayedColumns: string[] = ['firstName', 'middleName', 'lastName', 'email', 'role', 'salary'];
+  public dataSource: EmployeeDataSource = new EmployeeDataSource(this.employeeService, this.toastr);
+  public pageRequest: EmployeePageRequest = new EmployeePageRequest();
+  public employeeDashboardData: EmployeeDashboardResponse = new EmployeeDashboardResponse();
 
 
-  constructor(private toastr: ToastrService, private lawSearchEngineService: LawSearchEngineService) {
-  }
-
+  constructor(private employeeService: EmployeeService,
+    private toastr: ToastrService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.dataSource.loadEmployees();
 
+    this.employeeService.getEmployeeDashboardInfo().subscribe({
+      next: (response) => {
+        this.employeeDashboardData = response;
+      },
+      error: (error) => {
+        this.toastr.error(error.error.title);
+      }
+    });
   }
 
-  public addToken() {
-    if (this.searchOptions.length == 0) {
-      this.searchOptions.push(`${this.field}:'${this.value}'`);
-    } else {
-      this.searchOptions.push(`${this.operator}`);
-      this.searchOptions.push(`${this.field}:'${this.value}'`);
+  public loadEmployees() {
+    this.dataSource.loadEmployees(this.pageRequest);
+  }
+
+  public onPageChange(pageEvent: any) {
+    this.pageRequest.pageIndex = pageEvent.pageIndex;
+    this.pageRequest.pageSize = pageEvent.pageSize;
+    this.loadEmployees();
+  }
+
+  public display(employee: EmployeeInfo) {
+    switch (employee.role) {
+      case 'Admin':
+        this.router.navigate(['/employee-dashboard/admin-info', employee.id]);
+        break;
+      case 'Driver':
+        this.router.navigate(['/employee-dashboard/driver-info', employee.id]);
+        break;
     }
   }
-
-  public downloadDocument(contract: any) {
-    this.lawSearchEngineService.downloadDocument(contract).subscribe({
-      next: (response) => {
-        const blob = new Blob([response], { type: 'application/pdf' });
-        const url = window.URL.createObjectURL(blob);
-        window.open(url);
-      },
-      error: (error) => {
-        this.toastr.error(error.error.title);
-      }
-    });
-  }
-
-  public search() {
-
-    this.lawSearchEngineService.searchLaw({search: this.searchOptions}).subscribe({
-      next: (response) => {
-        this.searchResults = response;
-      },
-      error: (error) => {
-        this.toastr.error(error.error.title);
-      }
-    });
-  }
-
 }

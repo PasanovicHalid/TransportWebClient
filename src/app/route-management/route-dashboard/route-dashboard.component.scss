@@ -1,56 +1,105 @@
-.content{
-    min-height: 100%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 2%;
-}
+.content {
+    height: 100%;
+    margin: 20px;
 
-.title {
-    text-align: center;
-    font-size: 2.3rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    background-color: var(--accent-color);
-    border-radius: 20px;
-    box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
-}
+    .basic-info-stickers {
+        //height: 25%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 5vw;
+        margin-bottom: 3vh;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-radius: 20px;
+        background-color: var(--secondary-bg-color);
+        box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
 
-.file-name {
-    margin-left: 1rem;
-}
+        .card {
+            width: 20%;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
+            
+            .info {
+                padding: 10px;
+            }
 
-.upload-container {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
+            .employee-type {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                mat-icon {
+                    margin-left: 20px;
+                    margin-right: 20px;
+                    transform: scale(3);
+                    overflow: visible !important;
+                }
 
-    .upload-button {
-        flex-grow: 1;
-        width: 100%;
-        border-radius: 0;
-        background-color: var(--primary-color);
-        color: var(--secondary-bg-color);
+                
+            }
+
+            .card-buttons {
+                button {
+                    width: 100%;
+                    border-radius: 0;
+                    background-color: #9DC08B;
+                }
+            }
+        }
+
+        .employee-number {
+            background-color: #C07F00;
+        }
+        
+        .driver-number {
+            background-color: #FFD95A;
+            
+        }
+        
+        .admin-number {
+            background-color: #FFF7D4;
+        }
+    }
+
+    .displayed-employees {
+        border-radius: 20px;
+        background-color: var(--secondary-bg-color);
+        box-shadow: 4px 4px 4px rgba(78, 78, 78, 0.5);
+
+        .mat-mdc-table{
+            height: inherit !important;    
+            border-radius: inherit;
+            overflow:hidden !important;
+            background: inherit;
+        }
+        
+        .mat-mdc-paginator {
+            border-top: 1px rgba(0, 0, 0, 0.12) solid;
+            background-color: inherit;
+            border-bottom-left-radius: inherit;
+            border-bottom-right-radius: inherit;
+        }
+
+        .spinner-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 100%;
+            width: 100%;
+        }
+
+        tr.mat-mdc-row:hover {
+            cursor: pointer !important;
+            background-color: var(--accent-color) !important;
+            transition: 0.5s;
+        }
     }
 }
 
-.document-type-container{
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-
-    .document-type-button {
-        flex-grow: 1;
-        width: 100%;
-        border-radius: 0;
-        background-color: var(--primary-color);
-        color: var(--secondary-bg-color);
+::ng-deep {
+    .mat-mdc-progress-spinner {
+        --mdc-circular-progress-active-indicator-color: var(--accent-color) !important;
     }
-}
-
-.upload-button {
-    width: 100%;
-    border-radius: 0;
-    background-color: var(--primary-color);
-    color: var(--secondary-bg-color);
 }

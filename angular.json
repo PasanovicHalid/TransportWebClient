@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "LawSearchEngine.Ng": {
+    "TransportWebClient": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -65,11 +65,11 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "LawSearchEngine.Ng:build:production",
+              "browserTarget": "TransportWebClient:build:production",
               "proxyConfig": "proxy.conf.json"
             },
             "development": {
-              "browserTarget": "LawSearchEngine.Ng:build:development",
+              "browserTarget": "TransportWebClient:build:development",
               "proxyConfig": "proxy.conf.json"
             }
           },
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "LawSearchEngine.Ng:build"
+            "browserTarget": "TransportWebClient:build"
           }
         },
         "test": {
